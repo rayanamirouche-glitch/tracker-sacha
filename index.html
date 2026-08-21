@@ -47,7 +47,7 @@ tr.err td{background:#fef7f7;border-color:#f5c6c6}
 <body>
 <div class="header">
   <div class="logo">R.</div>
-  <div class="h-t"><div class="h-name">Tracker Sacha</div><div class="h-sub">avis Google + classement local géolocalisé · 26 fiches</div></div>
+  <div class="h-t"><div class="h-name">Tracker Sacha</div><div class="h-sub">avis Google + classement local géolocalisé · 22 fiches</div></div>
   <div><div class="total-num" id="grand">—</div><div class="total-lbl">AVIS TOTAL</div></div>
 </div>
 <div class="wrap">
@@ -69,116 +69,10 @@ tr.err td{background:#fef7f7;border-color:#f5c6c6}
   <div class="stat"><b id="sTop3">—</b><span>fiches top 3</span></div>
   <div class="stat"><b id="sAvgPos">—</b><span>position moy.</span></div>
   <div class="stat"><b id="sSnaps">0</b><span>snapshots</span></div>
-  <div class="stat"><b id="sOk">0/26</b><span>liées</span></div>
+  <div class="stat"><b id="sOk">0/22</b><span>liées</span></div>
 </div>
 
 <div class="chartbox"><canvas id="chart" height="100"></canvas></div>
 
 <table>
-<thead><tr><th>Fiche</th><th class="r">Avis</th><th class="r">Δ</th><th class="r">Position</th><th class="r">Δ</th></tr></thead>
-<tbody id="tbody"></tbody>
-</table>
-</div>
-
-<script>
-const FICHES = [{"name": "Audreghem Pro Toiture Père & Fils", "q": "audreghem pro toiture couvreur père et fils", "kw": "couvreur auderghem", "target": "audreghem", "ll": "50.8130,4.4310"}, {"name": "Couvreur Pro Élite Uccle", "q": "couvreur pro élite uccle", "kw": "couvreur uccle", "target": "pro élite", "ll": "50.8020,4.3370"}, {"name": "ProCouverture La Hulpe", "q": "procouverture la hulpe", "kw": "couvreur la hulpe", "target": "procouverture", "ll": "50.7290,4.4810"}, {"name": "ProCouvreur Waterloo Toit", "q": "procouvreur waterloo toit", "kw": "couvreur waterloo", "target": "procouvreur", "ll": "50.7180,4.3990"}, {"name": "Tradition et Expertise Nivelles", "q": "tradition expertise toit couvreurs nivelles", "kw": "couvreur nivelles", "target": "tradition", "ll": "50.5980,4.3280"}, {"name": "Top Alliance Couvreurs Braine", "q": "top alliance couvreurs braine l'alleud", "kw": "couvreur braine-l'alleud", "target": "top alliance", "ll": "50.6830,4.3680"}, {"name": "Perfect Toiture Rixensart", "q": "perfect toiture rixensart père et fils", "kw": "couvreur rixensart", "target": "perfect toiture", "ll": "50.7130,4.5250"}, {"name": "Toiturier Herstal", "q": "toiturier herstal zinguerie couverture", "kw": "couvreur herstal", "target": "herstal", "ll": "50.6640,5.6320"}, {"name": "Renov Toit Liège", "q": "renov toit liège couvreur master", "kw": "couvreur liège", "target": "renov toit", "ll": "50.6330,5.5670"}, {"name": "Rénovation de l'Extrême Waremme", "q": "rénovation extrême expert toituriers waremme", "kw": "couvreur waremme", "target": "extrême", "ll": "50.6970,5.2550"}, {"name": "Quatre Saisons Seraing", "q": "quatre saisons toiture pro couvreur seraing", "kw": "couvreur seraing", "target": "quatre saisons", "ll": "50.5830,5.5010"}, {"name": "Top Toiture Chaudfontaine", "q": "top toiture chaudfontaine", "kw": "couvreur chaudfontaine", "target": "top toiture", "ll": "50.5820,5.6350"}, {"name": "Plateau Fléron", "q": "plateau artisan toituriers élite fléron", "kw": "couvreur fléron", "target": "plateau", "ll": "50.6150,5.6810"}, {"name": "Renov'Toit Flémalle", "q": "renov'toit flémalle toiture", "kw": "couvreur flémalle", "target": "renov'toit", "ll": "50.6000,5.4440"}, {"name": "Toits de Vesdre Verviers", "q": "père fils artisan couvreurs verviers toits de vesdre", "kw": "couvreur verviers", "target": "vesdre", "ll": "50.5890,5.8620"}, {"name": "Waterloo Mon Toit Étincelant", "q": "waterloo mon toit étincelant", "kw": "couvreur waterloo", "target": "étincelant", "ll": "50.7180,4.3990"}, {"name": "Braine Mon Toit Neuf (I)", "q": "braine l'alleud mon toit neuf expertise", "kw": "couvreur braine-l'alleud", "target": "mon toit neuf", "ll": "50.6830,4.3680"}, {"name": "Mon Couvreur Pro Braine", "q": "mon couvreur pro toiture charpente zinguerie braine", "kw": "couvreur braine-l'alleud", "target": "mon couvreur pro", "ll": "50.6830,4.3680"}, {"name": "Braine Mon Toit Neuf (II)", "q": "braine l'alleud mon toit neuf professionnalisme", "kw": "couvreur braine-l'alleud", "target": "mon toit neuf", "ll": "50.6830,4.3680"}, {"name": "Demoussage Waterloo Mister Toiture", "q": "demoussage waterloo mister toiture", "kw": "démoussage toiture waterloo", "target": "mister", "ll": "50.7180,4.3990"}, {"name": "Le Meilleur pour Ma Toiture Waterloo", "q": "le meilleur pour ma toiture waterloo couvreur", "kw": "couvreur waterloo", "target": "meilleur pour ma toiture", "ll": "50.7180,4.3990"}, {"name": "Spécialiste Rénovation Waterloo (I)", "q": "spécialiste rénovation toiture artisanat maîtrise waterloo", "kw": "rénovation toiture waterloo", "target": "spécialiste rénovation", "ll": "50.7180,4.3990"}, {"name": "Couvreur La Hulpe SCH", "q": "couvreur la hulpe sch toiture charpente", "kw": "couvreur la hulpe", "target": "sch", "ll": "50.7290,4.4810"}, {"name": "RSG Rénovation Rhode", "q": "rsg rénovation couvreur rhode saint genèse", "kw": "couvreur rhode-saint-genèse", "target": "rsg", "ll": "50.7480,4.3560"}, {"name": "Spécialiste Rénovation Waterloo (II)", "q": "spécialiste rénovation toiture waterloo artisanat", "kw": "rénovation toiture waterloo", "target": "spécialiste rénovation", "ll": "50.7180,4.3990"}, {"name": "Couvreur SOS Seraing", "q": "couvreur sos seraing toiture", "kw": "couvreur seraing", "target": "sos", "ll": "50.5830,5.5010"}];
-const PROXY_PLACES='/.netlify/functions/places';
-const PROXY_RANK='/.netlify/functions/rank';
-const K_IDS='rc_sacha_ids',K_A='rc_sacha_avis',K_R='rc_sacha_rank';
-const $=id=>document.getElementById(id);
-function lget(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}}
-function lset(k,v){localStorage.setItem(k,JSON.stringify(v))}
-let ids=lget(K_IDS,{}),avisS=lget(K_A,{}),rankS=lget(K_R,{});
-const today=()=>new Date().toISOString().slice(0,10);
-const msg=t=>$('status').textContent=t;
-const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-
-async function resolveAll(){
-  $('btnResolve').disabled=true;let ok=0;
-  for(let i=0;i<FICHES.length;i++){
-    const f=FICHES[i];
-    if(ids[f.name]){ok++;continue}
-    msg(`Liaison ${i+1}/26 : ${f.name}…`);
-    try{
-      const j=await(await fetch(PROXY_PLACES+'?q='+encodeURIComponent(f.q+' belgique'))).json();
-      const c=j.candidates&&j.candidates[0];
-      if(c&&c.place_id){ids[f.name]=c.place_id;ok++}
-    }catch(e){}
-    await sleep(140);
-  }
-  lset(K_IDS,ids);$('btnResolve').disabled=false;
-  msg(`Liaison : ${ok}/26 ✓`);render();
-}
-
-async function refreshAvis(){
-  $('btnAvis').disabled=true;const snap={};let i=0;
-  for(const f of FICHES){
-    const pid=ids[f.name];if(!pid)continue;
-    msg(`Avis ${++i} : ${f.name}…`);
-    try{
-      const j=await(await fetch(PROXY_PLACES+'?place_id='+encodeURIComponent(pid))).json();
-      const n=j.result&&j.result.user_ratings_total;
-      if(typeof n==='number')snap[f.name]=n;
-    }catch(e){}
-    await sleep(110);
-  }
-  avisS[today()]=snap;lset(K_A,avisS);
-  $('btnAvis').disabled=false;msg(`Avis du ${today()} enregistrés ✓`);render();
-}
-
-async function refreshRanks(){
-  if(!confirm('26 recherches SerpApi seront consommées. Continuer ?'))return;
-  $('btnRank').disabled=true;const snap={};let i=0;
-  for(const f of FICHES){
-    msg(`Classement ${++i}/26 : ${f.kw}…`);
-    try{
-      const j=await(await fetch(PROXY_RANK+'?kw='+encodeURIComponent(f.kw)+'&target='+encodeURIComponent(f.target)+'&ll='+encodeURIComponent(f.ll))).json();
-      snap[f.name]=j.position||null;
-    }catch(e){snap[f.name]=null}
-    await sleep(250);
-  }
-  rankS[today()]=snap;lset(K_R,rankS);
-  $('btnRank').disabled=false;msg(`Classements du ${today()} enregistrés ✓`);render();
-}
-
-function exportData(){
-  const b=new Blob([JSON.stringify({ids,avis:avisS,rank:rankS},null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='sacha_tracker.json';a.click();
-}
-
-function lastTwo(s){const d=Object.keys(s).sort();return[d[d.length-1]?s[d[d.length-1]]:{},d[d.length-2]?s[d[d.length-2]]:{},d]}
-let chart;
-function render(){
-  const[aCur,aPrev,aDates]=lastTwo(avisS);
-  const[rCur,rPrev]=lastTwo(rankS);
-  const total=Object.values(aCur).reduce((s,n)=>s+n,0);
-  $('grand').textContent=Object.keys(aCur).length?total:'—';
-  const prevT=Object.values(aPrev).reduce((s,n)=>s+n,0);
-  $('sToday').textContent=Object.keys(aPrev).length?('+'+(total-prevT)):'—';
-  $('sSnaps').textContent=aDates.length;
-  $('sOk').textContent=Object.keys(ids).length+'/26';
-  const poss=Object.values(rCur).filter(p=>p);
-  $('sTop3').textContent=poss.length?poss.filter(p=>p<=3).length:'—';
-  $('sAvgPos').textContent=poss.length?('#'+(poss.reduce((s,p)=>s+p,0)/poss.length).toFixed(1)):'—';
-
-  $('tbody').innerHTML=FICHES.map(f=>{
-    const pid=ids[f.name],a=aCur[f.name],ap=aPrev[f.name],r=rCur[f.name],rp=rPrev[f.name];
-    const da=(a!=null&&ap!=null)?a-ap:null;
-    const dr=(r!=null&&rp!=null)?rp-r:null; // + = a monté
-    const daS=da==null?'':da>0?'+'+da:da===0?'=':da;
-    const drS=dr==null?'':dr>0?'▲'+dr:dr===0?'=':'▼'+(-dr);
-    const pc=r==null?'posx':r<=3?'pos1':r<=10?'pos2':'posx';
-    return '<tr'+(pid?'':' class="err"')+'><td>'+f.name+'<div class="kw">'+f.kw+'</div></td>'+
-      '<td class="r mono">'+(a!=null?a:'—')+'</td>'+
-      '<td class="r mono '+(da>0?'up':da<0?'dn':'zero')+'">'+daS+'</td>'+
-      '<td class="r mono '+pc+'">'+(r!=null?'#'+r:'—')+'</td>'+
-      '<td class="r mono '+(dr>0?'up':dr<0?'dn':'zero')+'">'+drS+'</td></tr>';
-  }).join('');
-
-  if(chart)chart.destroy();
-  chart=new Chart($('chart'),{type:'line',data:{labels:aDates,datasets:[{label:'Total avis',data:aDates.map(d=>Object.values(avisS[d]).reduce((s,n)=>s+n,0)),borderColor:'#c2552b',backgroundColor:'rgba(245,158,11,.12)',fill:true,tension:.3}]},options:{plugins:{legend:{display:false}}}});
-}
-render();
-</script>
-</body>
-</html>
+<thead><tr><th>Fiche</th><th class="r">Avis</th><th class="r">Δ</th><th class="r">Position</th><th
