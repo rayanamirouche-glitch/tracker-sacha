@@ -2,12 +2,21 @@ const { getStore } = require('@netlify/blobs');
 const FICHES = require('./fiches.json');
 const REGION = require('./region.json').region;
 
-const store = () => getStore('tracker');
+const store = () => getStore({ name: 'tracker', consistency: 'strong' });
 const today = () => new Date().toISOString().slice(0, 10);
 const to = (p, ms) => Promise.race([p, new Promise(r => setTimeout(() => r(null), ms))]);
 
 async function getJSON(k, d) { try { const v = await store().get(k, { type: 'json' }); return v ?? d } catch (e) { return d } }
 async function setJSON(k, v) { await store().setJSON(k, v) }
+
+async function rememberBase(base) {
+  if (!base) return;
+  try { const m = await getJSON('siteBase', {}); if (m.base !== base) await setJSON('siteBase', { base }); } catch (e) {}
+}
+async function baseUrl() {
+  const m = await getJSON('siteBase', {});
+  return m.base || process.env.URL || process.env.DEPLOY_PRIME_URL || '';
+}
 
 async function resolveIds() {
   const K = process.env.PLACES_API_KEY;
@@ -74,8 +83,11 @@ async function snapRank(start = 0) {
   hist[today()] = cur;
   await setJSON('rank', hist);
   if (start + B < FICHES.length) {
-    const next = (process.env.URL || '') + '/.netlify/functions/run?type=rank&force=1&i=' + (start + B);
-    await Promise.race([fetch(next).catch(() => {}), new Promise(r => setTimeout(r, 2500))]);
+    const base = await baseUrl();
+    if (base) {
+      const next = base + '/.netlify/functions/run?type=rank&force=1&i=' + (start + B);
+      await Promise.race([fetch(next).catch(() => {}), new Promise(r => setTimeout(r, 3000))]);
+    }
   }
   return cur;
 }
@@ -84,4 +96,4 @@ async function allData() {
   return { ids: await getJSON('ids', {}), avis: await getJSON('avis', {}), rank: await getJSON('rank', {}) };
 }
 
-module.exports = { snapAvis, snapRank, allData, rankCooldown };
+module.exports = { snapAvis, snapRank, allData, rankCooldown, rememberBase };

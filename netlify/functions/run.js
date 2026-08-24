@@ -2,6 +2,7 @@ const { connectLambda } = require('@netlify/blobs');
 const core = require('./core');
 exports.handler = async (event) => {
   connectLambda(event);
+  try { await core.rememberBase('https://' + (event.headers && (event.headers.host || event.headers.Host))); } catch (e) {}
   const q = event.queryStringParameters || {};
   try {
     if (q.type === 'avis') {
