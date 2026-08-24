@@ -2,7 +2,7 @@ const { getStore } = require('@netlify/blobs');
 const FICHES = require('./fiches.json');
 const REGION = require('./region.json').region;
 
-const store = () => getStore({ name: 'tracker', consistency: 'strong' });
+const store = () => getStore('tracker');
 const today = () => new Date().toISOString().slice(0, 10);
 const to = (p, ms) => Promise.race([p, new Promise(r => setTimeout(() => r(null), ms))]);
 
@@ -77,11 +77,7 @@ async function snapRank(start = 0) {
       snap[f.name] = pos;
     } catch (e) { snap[f.name] = null }
   }));
-  const hist = await getJSON('rank', {});
-  const cur = hist[today()] || {};
-  for (const k in snap) { if (snap[k] != null || cur[k] == null) cur[k] = snap[k] }
-  hist[today()] = cur;
-  await setJSON('rank', hist);
+  await setJSON('rankbatch/' + today() + '/' + start, snap);
   if (start + B < FICHES.length) {
     const base = await baseUrl();
     if (base) {
@@ -89,11 +85,26 @@ async function snapRank(start = 0) {
       await Promise.race([fetch(next).catch(() => {}), new Promise(r => setTimeout(r, 3000))]);
     }
   }
-  return cur;
+  return snap;
+}
+
+async function rankHistory() {
+  const hist = await getJSON('rank', {});   // ancien format conservé
+  try {
+    const { blobs } = await store().list({ prefix: 'rankbatch/' });
+    for (const b of (blobs || [])) {
+      const parts = b.key.split('/');       // rankbatch/DATE/START
+      const date = parts[1];
+      const snap = await getJSON(b.key, {});
+      hist[date] = hist[date] || {};
+      for (const k in snap) { if (snap[k] != null || hist[date][k] == null) hist[date][k] = snap[k] }
+    }
+  } catch (e) {}
+  return hist;
 }
 
 async function allData() {
-  return { ids: await getJSON('ids', {}), avis: await getJSON('avis', {}), rank: await getJSON('rank', {}) };
+  return { ids: await getJSON('ids', {}), avis: await getJSON('avis', {}), rank: await rankHistory() };
 }
 
 module.exports = { snapAvis, snapRank, allData, rankCooldown, rememberBase };
