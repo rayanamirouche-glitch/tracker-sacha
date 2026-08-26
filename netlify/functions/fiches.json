@@ -1,1 +1,242 @@
-[{"name": "Audreghem Pro Toiture Père & Fils", "q": "audreghem pro toiture couvreur père et fils", "kw": "couvreur auderghem", "target": "audreghem", "ll": "50.8130,4.4310"}, {"name": "Couvreur Pro Élite Uccle", "q": "couvreur pro élite uccle", "kw": "couvreur uccle", "target": "pro élite", "ll": "50.8020,4.3370"}, {"name": "ProCouverture La Hulpe", "q": "procouverture la hulpe", "kw": "couvreur la hulpe", "target": "procouverture", "ll": "50.7290,4.4810"}, {"name": "ProCouvreur Waterloo Toit", "q": "procouvreur waterloo toit", "kw": "couvreur waterloo", "target": "procouvreur", "ll": "50.7180,4.3990"}, {"name": "Tradition et Expertise Nivelles", "q": "tradition expertise toit couvreurs nivelles", "kw": "couvreur nivelles", "target": "tradition", "ll": "50.5980,4.3280"}, {"name": "Top Alliance Couvreurs Braine", "q": "top alliance couvreurs braine l'alleud", "kw": "couvreur braine-l'alleud", "target": "top alliance", "ll": "50.6830,4.3680"}, {"name": "Perfect Toiture Rixensart", "q": "perfect toiture rixensart père et fils", "kw": "couvreur rixensart", "target": "perfect toiture", "ll": "50.7130,4.5250"}, {"name": "Toiturier Herstal", "q": "toiturier herstal zinguerie couverture", "kw": "couvreur herstal", "target": "herstal", "ll": "50.6640,5.6320"}, {"name": "Renov Toit Liège", "q": "renov toit liège couvreur master", "kw": "couvreur liège", "target": "renov toit", "ll": "50.6330,5.5670"}, {"name": "Rénovation de l'Extrême Waremme", "q": "rénovation extrême expert toituriers waremme", "kw": "couvreur waremme", "target": "extrême", "ll": "50.6970,5.2550"}, {"name": "Top Toiture Chaudfontaine", "q": "top toiture chaudfontaine", "kw": "couvreur chaudfontaine", "target": "top toiture", "ll": "50.5820,5.6350"}, {"name": "Plateau Fléron", "q": "plateau artisan toituriers élite fléron", "kw": "couvreur fléron", "target": "plateau", "ll": "50.6150,5.6810"}, {"name": "Renov'Toit Flémalle", "q": "renov'toit flémalle toiture", "kw": "couvreur flémalle", "target": "renov'toit", "ll": "50.6000,5.4440"}, {"name": "Toits de Vesdre Verviers", "q": "père fils artisan couvreurs verviers toits de vesdre", "kw": "couvreur verviers", "target": "vesdre", "ll": "50.5890,5.8620"}, {"name": "Waterloo Mon Toit Étincelant", "q": "waterloo mon toit étincelant", "kw": "couvreur waterloo", "target": "étincelant", "ll": "50.7180,4.3990"}, {"name": "Mon Couvreur Pro Braine", "q": "mon couvreur pro toiture charpente zinguerie braine", "kw": "couvreur braine-l'alleud", "target": "mon couvreur pro", "ll": "50.6830,4.3680"}, {"name": "Demoussage Waterloo Mister Toiture", "q": "demoussage waterloo mister toiture", "kw": "démoussage toiture waterloo", "target": "mister", "ll": "50.7180,4.3990"}, {"name": "Le Meilleur pour Ma Toiture Waterloo", "q": "le meilleur pour ma toiture waterloo couvreur", "kw": "couvreur waterloo", "target": "meilleur pour ma toiture", "ll": "50.7180,4.3990"}, {"name": "Spécialiste Rénovation Waterloo", "q": "spécialiste rénovation toiture artisanat maîtrise waterloo", "kw": "rénovation toiture waterloo", "target": "spécialiste rénovation", "ll": "50.7180,4.3990"}, {"name": "Couvreur La Hulpe SCH", "q": "couvreur la hulpe sch toiture charpente", "kw": "couvreur la hulpe", "target": "sch", "ll": "50.7290,4.4810"}, {"name": "RSG Rénovation Rhode", "q": "rsg rénovation couvreur rhode saint genèse", "kw": "couvreur rhode-saint-genèse", "target": "rsg", "ll": "50.7480,4.3560"}, {"name": "Couvreur SOS Seraing", "q": "couvreur sos seraing toiture", "kw": "couvreur seraing", "target": "sos", "ll": "50.5830,5.5010"}]
+[
+ {
+  "name": "Audreghem pro toiture couvreur père et fils",
+  "q": "Audreghem pro toiture couvreur père et fils",
+  "target": "audreghem pro toiture",
+  "ll": "50.815,4.433",
+  "kw": "toiturier auderghem",
+  "city": "Auderghem",
+  "link": "https://maps.app.goo.gl/NLsARj4nMj7689ZD6",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Couvreur pro élite uccle",
+  "q": "Couvreur pro élite uccle",
+  "target": "couvreur pro elite",
+  "ll": "50.802,4.337",
+  "kw": "toiturier uccle",
+  "city": "Uccle",
+  "link": "https://maps.app.goo.gl/1N5TRLnJDP6p1vZF8",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "ProCouverture la hulpe",
+  "q": "ProCouverture la hulpe",
+  "target": "procouverture la hulpe",
+  "ll": "50.731,4.480",
+  "kw": "toiturier la hulpe",
+  "city": "La Hulpe",
+  "link": "https://maps.app.goo.gl/vDzzNVkGbhpQ5DQh7",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "ProCouvreur waterloo toit",
+  "q": "ProCouvreur waterloo toit",
+  "target": "procouvreur waterloo toit",
+  "ll": "50.715,4.399",
+  "kw": "toiturier waterloo",
+  "city": "Waterloo",
+  "link": "https://maps.app.goo.gl/D7Tt67K6zqYgsSJ9A",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Tradition et expertise toit couvreurs nivelles",
+  "q": "Tradition et expertise toit couvreurs nivelles",
+  "target": "tradition et expertise",
+  "ll": "50.598,4.325",
+  "kw": "toiturier nivelles",
+  "city": "Nivelles",
+  "link": "https://maps.app.goo.gl/D8yDSbzFRCq5FmXA9",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Top Alliance couvreurs Braine",
+  "q": "Top Alliance couvreurs Braine",
+  "target": "top alliance couvreurs",
+  "ll": "50.683,4.370",
+  "kw": "toiturier braine l alleud",
+  "city": "Braine-l'Alleud",
+  "link": "https://maps.app.goo.gl/cVcueU1uYX8fZd228",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Perfect toiture Rixensart Père et fils artisan couvreur",
+  "q": "Perfect toiture Rixensart Père et fils artisan couvreur",
+  "target": "perfect toiture rixensart",
+  "ll": "50.712,4.526",
+  "kw": "toiturier rixensart",
+  "city": "Rixensart",
+  "link": "https://maps.app.goo.gl/VNmqCGkvPAx7mrv6A",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Masterpro Renovation Woluwe couverture toiture",
+  "q": "Masterpro Renovation Woluwe couverture toiture",
+  "target": "masterpro renovation woluwe",
+  "ll": "50.845,4.430",
+  "kw": "toiturier woluwe",
+  "city": "Woluwe",
+  "link": "https://maps.app.goo.gl/QHqeujAM6Scm4Vow7",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Toiturier herstal zinguerie et couverture",
+  "q": "Toiturier herstal zinguerie et couverture",
+  "target": "toiturier herstal zinguerie",
+  "ll": "50.663,5.632",
+  "kw": "toiturier herstal",
+  "city": "Herstal",
+  "link": "https://maps.app.goo.gl/mFcExZckv548QB5P6",
+  "region": "Liège"
+ },
+ {
+  "name": "Renov toit liège couvreur master",
+  "q": "Renov toit liège couvreur master",
+  "target": "renov toit liege",
+  "ll": "50.633,5.567",
+  "kw": "toiturier liege",
+  "city": "Liège",
+  "link": "https://maps.app.goo.gl/deVY8wHzAoJVE2y59",
+  "region": "Liège"
+ },
+ {
+  "name": "Rénovation de lextrême : expert toituriers depuis 2000 ans ",
+  "q": "Rénovation de lextrême : expert toituriers depuis 2000 ans waremme",
+  "target": "renovation de lextreme",
+  "ll": "50.697,5.255",
+  "kw": "toiturier waremme",
+  "city": "Waremme",
+  "link": "https://maps.app.goo.gl/AfGxAGjyHZrn788A9",
+  "region": "Liège"
+ },
+ {
+  "name": "Quatres saisons toiture pro couvreur seraing",
+  "q": "Quatres saisons toiture pro couvreur seraing",
+  "target": "quatres saisons toiture",
+  "ll": "50.583,5.500",
+  "kw": "toiturier seraing",
+  "city": "Seraing",
+  "link": "https://maps.app.goo.gl/2yJGKVg1oQZZyZZ67",
+  "region": "Liège"
+ },
+ {
+  "name": "Top toiture chaud fontaine",
+  "q": "Top toiture chaud fontaine",
+  "target": "top toiture chaud",
+  "ll": "50.583,5.653",
+  "kw": "toiturier chaudfontaine",
+  "city": "Chaudfontaine",
+  "link": "https://maps.app.goo.gl/Hz2WTmtgx5MvCPnW9",
+  "region": "Liège"
+ },
+ {
+  "name": "Plateau artisan toituriers lélite de fleron",
+  "q": "Plateau artisan toituriers lélite de fleron",
+  "target": "plateau artisan toituriers",
+  "ll": "50.615,5.680",
+  "kw": "toiturier fleron",
+  "city": "Fléron",
+  "link": "https://maps.app.goo.gl/Z4aspLAGEzgeL8Ec8",
+  "region": "Liège"
+ },
+ {
+  "name": "Renovtoit",
+  "q": "Renovtoit",
+  "target": "renovtoit",
+  "ll": "50.600,5.445",
+  "kw": "toiturier flemalle",
+  "city": "Flémalle",
+  "link": "https://maps.app.goo.gl/nNwFNoGEJBiEmWHGA",
+  "region": "Liège"
+ },
+ {
+  "name": "père et fils artisan couvreurs Verviers : les toits de vesdr",
+  "q": "père et fils artisan couvreurs Verviers : les toits de vesdre",
+  "target": "pere et fils",
+  "ll": "50.589,5.865",
+  "kw": "toiturier verviers",
+  "city": "Verviers",
+  "link": "https://maps.app.goo.gl/FpF5J1qNwicsGAXm8",
+  "region": "Liège"
+ },
+ {
+  "name": "Waterloo mon toit étincelant",
+  "q": "Waterloo mon toit étincelant",
+  "target": "waterloo mon toit",
+  "ll": "50.715,4.399",
+  "kw": "toiturier waterloo",
+  "city": "Waterloo",
+  "link": "https://maps.app.goo.gl/QNKo7n7Y74S3aygo8",
+  "region": "Brabant"
+ },
+ {
+  "name": "Mon couvreur pro. Toiture, charpente et zinguerie. Artisan R",
+  "q": "Mon couvreur pro. Toiture, charpente et zinguerie. Artisan Référence sur Braine",
+  "target": "mon couvreur pro.",
+  "ll": "50.683,4.370",
+  "kw": "toiturier braine l'alleud",
+  "city": "Braine-l'Alleud",
+  "link": "https://maps.app.goo.gl/NTRricu3DKs86U4Q9",
+  "region": "Brabant"
+ },
+ {
+  "name": "Demoussage Waterloo mister toiture",
+  "q": "Demoussage Waterloo mister toiture",
+  "target": "demoussage waterloo mister",
+  "ll": "50.715,4.399",
+  "kw": "toiturier waterloo",
+  "city": "Waterloo",
+  "link": "https://maps.app.goo.gl/fcP238U1ZY62t6w57",
+  "region": "Brabant"
+ },
+ {
+  "name": "Le meilleure pour ma toiture Waterloo couvreur",
+  "q": "Le meilleure pour ma toiture Waterloo couvreur",
+  "target": "le meilleure pour",
+  "ll": "50.715,4.399",
+  "kw": "toiturier waterloo",
+  "city": "Waterloo",
+  "link": "https://maps.app.goo.gl/DtVsUDFhe2SEnr1n9",
+  "region": "Brabant"
+ },
+ {
+  "name": "spécialiste rénovation toiture. Artisanat et maîtrise Waterl",
+  "q": "spécialiste rénovation toiture. Artisanat et maîtrise Waterloo",
+  "target": "specialiste renovation toiture.",
+  "ll": "50.715,4.399",
+  "kw": "toiturier waterloo",
+  "city": "Waterloo",
+  "link": "https://maps.app.goo.gl/gjoy4d5EjRw6GYcQA",
+  "region": "Brabant"
+ },
+ {
+  "name": "RSG rénovation couvreur à Rhode",
+  "q": "RSG rénovation couvreur à Rhode",
+  "target": "rsg renovation couvreur",
+  "ll": "50.746,4.357",
+  "kw": "toiturier rhode st genese",
+  "city": "Rhode-St-Genèse",
+  "link": "https://maps.app.goo.gl/bMsJqibo5MViSz3B7",
+  "region": "Brabant"
+ },
+ {
+  "name": "spécialiste rénovation toiture. Artisanat et maîtrise Waterl (2)",
+  "q": "spécialiste rénovation toiture. Artisanat et maîtrise Waterloo",
+  "target": "specialiste renovation toiture.",
+  "ll": "50.715,4.399",
+  "kw": "toiturier waterloo",
+  "city": "Waterloo",
+  "link": "https://maps.app.goo.gl/asjomggQWjvZLGDKA",
+  "region": "Brabant"
+ },
+ {
+  "name": "Couvreur SOS seraing toiture",
+  "q": "Couvreur SOS seraing toiture",
+  "target": "couvreur sos seraing",
+  "ll": "50.583,5.500",
+  "kw": "toiturier seraing",
+  "city": "Seraing",
+  "link": "https://maps.app.goo.gl/idH12J7QEvjUai5k6",
+  "region": "Liège"
+ }
+]
