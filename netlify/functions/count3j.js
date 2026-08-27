@@ -1,59 +1,67 @@
-// Compteur J-2 / J-1 / J — lit les avis réels (SerpApi, dates ISO) via les place_id déjà liés
 const FICHES = require('./fiches.json');
-const { getStore } = require('@netlify/blobs');
-const store = () => getStore('tracker');
-async function getJSON(k, d) { try { const v = await store().get(k, { type: 'json' }); return (v === null || v === undefined) ? d : v } catch (e) { return d } }
-
-const SERP_KEY = process.env.SERPAPI_KEY;
-const parisDate = d => new Intl.DateTimeFormat('fr-CA', { timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
-
-async function countRecent(placeId, buckets, cutoff) {
-  let token = null, pages = 0, stop = false;
-  while (!stop && pages < 4) {
-    let url = `https://serpapi.com/search.json?engine=google_maps_reviews&place_id=${placeId}&sort_by=newestFirst&hl=fr&api_key=${SERP_KEY}`;
-    if (token) url += `&next_page_token=${encodeURIComponent(token)}&num=20`;
-    const r = await fetch(url); const j = await r.json();
-    if (j.error) return { error: j.error };
-    const revs = j.reviews || [];
-    if (!revs.length) break;
-    for (const rev of revs) {
-      const iso = rev.iso_date || rev.iso_date_of_last_edit;
-      if (!iso) continue;
-      const day = parisDate(new Date(iso));
-      if (day in buckets) buckets[day]++;
-      else if (day < cutoff) { stop = true; break; }
-    }
-    token = j.serpapi_pagination && j.serpapi_pagination.next_page_token;
-    if (!token) break;
-    pages++;
-  }
-  return {};
-}
 
 exports.handler = async (event) => {
-  const p = event.queryStringParameters || {};
-  const start = parseInt(p.start || '0', 10);
-  const n = parseInt(p.n || '3', 10);
-  const slice = FICHES.slice(start, start + n);
-  const ids = await getJSON('ids', {});
+  const q = event.queryStringParameters || {};
+  const start = parseInt(q.start || '0', 10);
+  const n = parseInt(q.n || '3', 10);
+  const KEY = process.env.SERPAPI_KEY;
 
-  const now = new Date();
-  const days = [0, 1, 2].map(k => parisDate(new Date(now.getTime() - k * 86400000)));
-
-  const out = {};
-  for (const f of slice) {
-    const pid = ids[f.name];
-    if (!pid) { out[f.name] = { err: 'non liée' }; continue; }
-    const buckets = {}; buckets[days[0]] = 0; buckets[days[1]] = 0; buckets[days[2]] = 0;
-    try {
-      const res = await countRecent(pid, buckets, days[2]);
-      out[f.name] = res.error ? { err: String(res.error).slice(0, 80) }
-        : { j0: buckets[days[0]], j1: buckets[days[1]], j2: buckets[days[2]] };
-    } catch (e) { out[f.name] = { err: String(e).slice(0, 80) }; }
+  // Récupère les place_id déjà liés via la fonction data du site (zéro résolution en plus)
+  const base = process.env.URL || ('https://' + (event.headers && event.headers.host));
+  let ids = {};
+  try {
+    const dr = await fetch(base + '/.netlify/functions/data');
+    const data = await dr.json();
+    ids = data.ids || {};
+  } catch (e) {
+    return { statusCode: 500, body: JSON.stringify({ error: 'data unreachable' }) };
   }
+
+  const fmt = (t) => new Date(t).toISOString().slice(0, 10);
+  const days = [fmt(Date.now() - 2 * 864e5), fmt(Date.now() - 864e5), fmt(Date.now())]; // [J-2, J-1, J]
+
+  const results = {};
+  for (const f of FICHES.slice(start, start + n)) {
+    const pid = ids[f.name];
+    if (!pid) { results[f.name] = { err: 'non liée' }; continue; }
+    try {
+      let j0 = 0, j1 = 0, j2 = 0, next = null, guard = 0, stop = false;
+      do {
+        const u = new URL('https://serpapi.com/search.json');
+        u.searchParams.set('engine', 'google_maps_reviews');
+        u.searchParams.set('place_id', pid);
+        u.searchParams.set('sort_by', 'newestFirst');
+        u.searchParams.set('hl', 'fr');
+        u.searchParams.set('api_key', KEY);
+        if (next) u.searchParams.set('next_page_token', next);
+        const r = await fetch(u);
+        const jj = await r.json();
+        const revs = jj.reviews || [];
+        for (const rv of revs) {
+          let day = (rv.iso_date || rv.iso_date_of_last_edit || '').slice(0, 10);
+          if (!day) {
+            const rel = (rv.date || '').toLowerCase();
+            if (/heure|minute|instant|seconde/.test(rel)) day = days[2];
+            else if (/il y a (un|1) jour/.test(rel)) day = days[1];
+            else if (/il y a 2 jours/.test(rel)) day = days[0];
+            else { stop = true; break; }
+          }
+          if (day === days[2]) j0++;
+          else if (day === days[1]) j1++;
+          else if (day === days[0]) j2++;
+          else if (day < days[0]) { stop = true; break; }
+        }
+        next = (!stop && jj.serpapi_pagination && jj.serpapi_pagination.next_page_token) || null;
+      } while (next && ++guard < 4);
+      results[f.name] = { j0, j1, j2 };
+    } catch (e) {
+      results[f.name] = { err: 'api' };
+    }
+  }
+
   return {
     statusCode: 200,
-    headers: { 'content-type': 'application/json', 'access-control-allow-origin': '*' },
-    body: JSON.stringify({ days: { j0: days[0], j1: days[1], j2: days[2] }, count: FICHES.length, results: out })
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ days, results })
   };
 };
