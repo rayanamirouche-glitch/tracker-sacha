@@ -8,6 +8,18 @@ exports.handler = async (event) => {
   const q = event.queryStringParameters || {};
   const baseUrl = process.env.URL || ('https://' + ((event.headers && event.headers.host) || ''));
   try {
+    if (q.type === 'search') {
+      const K = process.env.PLACES_API_KEY;
+      if (!q.q) return { statusCode: 400, body: JSON.stringify({ error: 'q requis' }) };
+      const body = { textQuery: q.q };
+      if (q.ll) { const c = q.ll.split(',').map(Number); body.locationBias = { circle: { center: { latitude: c[0], longitude: c[1] }, radius: 30000 } }; }
+      const j = await fetch('https://places.googleapis.com/v1/places:searchText', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Goog-Api-Key': K, 'X-Goog-FieldMask': 'places.id,places.displayName,places.rating,places.userRatingCount,places.formattedAddress,places.location' },
+        body: JSON.stringify(body)
+      }).then(r => r.json());
+      return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ q: q.q, results: (j.places || []).slice(0, 5), erreur: j.error || null }, null, 1) };
+    }
     if (q.type === 'rankdiag') {
       const K = process.env.SERPAPI_KEY;
       const i = parseInt(q.i || '0', 10);
