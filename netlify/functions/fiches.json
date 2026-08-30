@@ -238,5 +238,205 @@
   "city": "Seraing",
   "link": "https://maps.app.goo.gl/idH12J7QEvjUai5k6",
   "region": "Liège"
+ },
+ {
+  "name": "Toitures du Lac – couvreur à Rixensart, l’ardoise au sec",
+  "q": "Toitures du Lac – couvreur à Rixensart, l’ardoise au sec",
+  "target": "toitures du lac",
+  "ll": "50.7265,4.5187",
+  "kw": "toiturier rixensart",
+  "city": "Rixensart",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJ_6EpofXXw0cRrMkp_UiqDbc",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Couvreur Montvalezan | Charpente & Toiture des Arcs sous la neige",
+  "q": "Couvreur Montvalezan | Charpente & Toiture des Arcs sous la neige",
+  "target": "couvreur montvalezan |",
+  "ll": "45.6264,6.8499",
+  "kw": "toiturier montvalezan",
+  "city": "Montvalezan",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJQ2mOfJJpiUcRRrmUZokib1Y",
+  "region": "France"
+ },
+ {
+  "name": "Ets Delcourt, couvreur zingueur à Wavre",
+  "q": "Ets Delcourt, couvreur zingueur à Wavre",
+  "target": "ets delcourt, couvreur",
+  "ll": "50.7113,4.5857",
+  "kw": "toiturier wavre",
+  "city": "Wavre",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJq_FtSJDXw0cRFxvdcd2zJUc",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Wavre Toiture Pro – couvreur ardoisier du brabant",
+  "q": "Wavre Toiture Pro – couvreur ardoisier du brabant",
+  "target": "wavre toiture pro",
+  "ll": "50.6928,4.5673",
+  "kw": "toiturier wavre",
+  "city": "Wavre",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJ0cKwP77Xw0cR7ud04DNsUPU",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Couvreur Grez-Doiceau · Maison Vandenberg Couverture toits de caractère",
+  "q": "Couvreur Grez-Doiceau · Maison Vandenberg Couverture toits de caractère",
+  "target": "couvreur grez doiceau",
+  "ll": "50.7384,4.6918",
+  "kw": "toiturier grez doiceau",
+  "city": "Grez-Doiceau",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJJ9N6nu17wUcRtCREI_dFKbk",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Hoeilaart 7ème ciel toiture",
+  "q": "Hoeilaart 7ème ciel toiture",
+  "target": "hoeilaart 7eme ciel",
+  "ll": "50.7703,4.4691",
+  "kw": "toiturier hoeilaart",
+  "city": "Hoeilaart",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJ5cM6umfbw0cROZo43QJTsVo",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Renard toiture kraainem zinc et ardoise",
+  "q": "Renard toiture kraainem zinc et ardoise",
+  "target": "renard toiture kraainem",
+  "ll": "50.8373,4.472",
+  "kw": "toiturier kraainem",
+  "city": "Kraainem",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJ1Tf6v-Pbw0cRpoet384bO4Y",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Delvaux couverture . Wezembeek oppem",
+  "q": "Delvaux couverture . Wezembeek oppem",
+  "target": "delvaux couverture wezembeek",
+  "ll": "50.8429,4.4938",
+  "kw": "toiturier wezembeek oppem",
+  "city": "Wezembeek-Oppem",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJWerpA0fdw0cRuxHiDAH9Gj0",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Dakodak couvreur Zaventem",
+  "q": "Dakodak couvreur Zaventem",
+  "target": "dakodak couvreur zaventem",
+  "ll": "50.86,4.5204",
+  "kw": "toiturier zaventem",
+  "city": "Zaventem",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJRbihcyHfw0cRbgPO10nQxTM",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Willems dakwerken / couvreur expérimenté de père en fils",
+  "q": "Willems dakwerken / couvreur expérimenté de père en fils",
+  "target": "willems dakwerken /",
+  "ll": "50.8695,4.633",
+  "kw": "toiturier bertem",
+  "city": "Bertem",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJQR9FU79hwUcR3_hLtiW6cM4",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Woluwe saint pierre techpro toiture devis gratuit drone",
+  "q": "Woluwe saint pierre techpro toiture devis gratuit drone",
+  "target": "woluwe saint pierre",
+  "ll": "50.8296,4.4619",
+  "kw": "toiturier woluwe saint pierre",
+  "city": "Woluwe-Saint-Pierre",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJGUT07ijbw0cRpiiKElYxP7I",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Ets de backer toiturier à Kortenberg",
+  "q": "Ets de backer toiturier à Kortenberg",
+  "target": "ets de backer",
+  "ll": "50.8918,4.5422",
+  "kw": "toiturier kortenberg",
+  "city": "Kortenberg",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJ18B1_d_fw0cRG_bmdfjCEvs",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Faitage du château Oupeye toiture",
+  "q": "Faitage du château Oupeye toiture",
+  "target": "faitage du chateau",
+  "ll": "50.7066,5.6415",
+  "kw": "toiturier oupeye",
+  "city": "Oupeye",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJz376z1jxwEcRzSWY2F_B5Bk",
+  "region": "Liège"
+ },
+ {
+  "name": "Toit et moi . Tervuren toiture",
+  "q": "Toit et moi . Tervuren toiture",
+  "target": "toit et moi",
+  "ll": "50.8215,4.5065",
+  "kw": "toiturier tervuren",
+  "city": "Tervuren",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJUz5YmeDZw0cRk2oTCRb4YO0",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Bernard and co toiture auderghem",
+  "q": "Bernard and co toiture auderghem",
+  "target": "bernard and co",
+  "ll": "50.8163,4.4184",
+  "kw": "toiturier auderghem",
+  "city": "Auderghem",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJyUD0WJvbw0cRkvpkwBMX91Y",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "L’expert bitume deMeaux enrobé / goudronnage",
+  "q": "L’expert bitume deMeaux enrobé / goudronnage",
+  "target": "l'expert bitume demeaux",
+  "ll": "48.9578,2.9339",
+  "kw": "toiturier meaux",
+  "city": "Meaux",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJU3hAUVyj6EcRhQ3N7YINVrA",
+  "region": "France"
+ },
+ {
+  "name": "Couvreur Anderlecht toit sec toit net",
+  "q": "Couvreur Anderlecht toit sec toit net",
+  "target": "couvreur anderlecht toit",
+  "ll": "50.8214,4.2972",
+  "kw": "toiturier anderlecht",
+  "city": "Anderlecht",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJV6j2CVLHw0cRbRGjyabvSgg",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Couverture de l'oie service de toiture à visé",
+  "q": "Couverture de l'oie service de toiture à visé",
+  "target": "couverture de l'oie",
+  "ll": "50.7332,5.7024",
+  "kw": "toiturier vise",
+  "city": "Visé",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJU1sqXBXvwEcRraiEPqtUhcE",
+  "region": "Liège"
+ },
+ {
+  "name": "Haut perché toiture ottignies louvain la neuve",
+  "q": "Haut perché toiture ottignies louvain la neuve",
+  "target": "haut perche toiture",
+  "ll": "50.669,4.603",
+  "kw": "toiturier ottignies louvain la neuve",
+  "city": "Ottignies-Louvain-la-Neuve",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJWXuBUxB_wUcR_U-V-4w47ug",
+  "region": "Brabant/Bxl"
+ },
+ {
+  "name": "Hal tuiles d'or couverture",
+  "q": "Hal tuiles d'or couverture",
+  "target": "hal tuiles d'or",
+  "ll": "50.7452,4.2215",
+  "kw": "toiturier halle",
+  "city": "Halle",
+  "link": "https://www.google.com/maps/place/?q=place_id:ChIJi8CytVjJw0cRxud_3czIbpE",
+  "region": "Brabant/Bxl"
  }
 ]
