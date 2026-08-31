@@ -7,6 +7,7 @@
   "kw": "toiturier auderghem",
   "city": "Auderghem",
   "link": "https://maps.app.goo.gl/NLsARj4nMj7689ZD6",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -17,6 +18,7 @@
   "kw": "toiturier uccle",
   "city": "Uccle",
   "link": "https://maps.app.goo.gl/1N5TRLnJDP6p1vZF8",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -27,6 +29,7 @@
   "kw": "toiturier la hulpe",
   "city": "La Hulpe",
   "link": "https://maps.app.goo.gl/vDzzNVkGbhpQ5DQh7",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -37,6 +40,7 @@
   "kw": "toiturier waterloo",
   "city": "Waterloo",
   "link": "https://maps.app.goo.gl/D7Tt67K6zqYgsSJ9A",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -47,6 +51,7 @@
   "kw": "toiturier nivelles",
   "city": "Nivelles",
   "link": "https://maps.app.goo.gl/D8yDSbzFRCq5FmXA9",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -57,6 +62,7 @@
   "kw": "toiturier braine l alleud",
   "city": "Braine-l'Alleud",
   "link": "https://maps.app.goo.gl/cVcueU1uYX8fZd228",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -67,6 +73,7 @@
   "kw": "toiturier rixensart",
   "city": "Rixensart",
   "link": "https://maps.app.goo.gl/VNmqCGkvPAx7mrv6A",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -77,6 +84,7 @@
   "kw": "toiturier woluwe",
   "city": "Woluwe",
   "link": "https://maps.app.goo.gl/QHqeujAM6Scm4Vow7",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -87,6 +95,7 @@
   "kw": "toiturier herstal",
   "city": "Herstal",
   "link": "https://maps.app.goo.gl/mFcExZckv548QB5P6",
+  "obj": 10,
   "region": "Liège"
  },
  {
@@ -97,6 +106,7 @@
   "kw": "toiturier liege",
   "city": "Liège",
   "link": "https://maps.app.goo.gl/deVY8wHzAoJVE2y59",
+  "obj": 10,
   "region": "Liège"
  },
  {
@@ -107,6 +117,7 @@
   "kw": "toiturier waremme",
   "city": "Waremme",
   "link": "https://maps.app.goo.gl/AfGxAGjyHZrn788A9",
+  "obj": 10,
   "region": "Liège"
  },
  {
@@ -117,6 +128,7 @@
   "kw": "toiturier seraing",
   "city": "Seraing",
   "link": "https://maps.app.goo.gl/2yJGKVg1oQZZyZZ67",
+  "obj": 10,
   "region": "Liège"
  },
  {
@@ -127,6 +139,7 @@
   "kw": "toiturier chaudfontaine",
   "city": "Chaudfontaine",
   "link": "https://maps.app.goo.gl/Hz2WTmtgx5MvCPnW9",
+  "obj": 10,
   "region": "Liège"
  },
  {
@@ -137,6 +150,7 @@
   "kw": "toiturier fleron",
   "city": "Fléron",
   "link": "https://maps.app.goo.gl/Z4aspLAGEzgeL8Ec8",
+  "obj": 10,
   "region": "Liège"
  },
  {
@@ -147,6 +161,7 @@
   "kw": "toiturier flemalle",
   "city": "Flémalle",
   "link": "https://maps.app.goo.gl/nNwFNoGEJBiEmWHGA",
+  "obj": 10,
   "region": "Liège"
  },
  {
@@ -157,6 +172,7 @@
   "kw": "toiturier verviers",
   "city": "Verviers",
   "link": "https://maps.app.goo.gl/FpF5J1qNwicsGAXm8",
+  "obj": 10,
   "region": "Liège"
  },
  {
@@ -167,6 +183,7 @@
   "kw": "toiturier waterloo",
   "city": "Waterloo",
   "link": "https://maps.app.goo.gl/QNKo7n7Y74S3aygo8",
+  "obj": 10,
   "region": "Brabant"
  },
  {
@@ -177,6 +194,7 @@
   "kw": "toiturier braine l'alleud",
   "city": "Braine-l'Alleud",
   "link": "https://maps.app.goo.gl/NTRricu3DKs86U4Q9",
+  "obj": 10,
   "region": "Brabant"
  },
  {
@@ -187,6 +205,7 @@
   "kw": "toiturier waterloo",
   "city": "Waterloo",
   "link": "https://maps.app.goo.gl/fcP238U1ZY62t6w57",
+  "obj": 10,
   "region": "Brabant"
  },
  {
@@ -197,6 +216,7 @@
   "kw": "toiturier waterloo",
   "city": "Waterloo",
   "link": "https://maps.app.goo.gl/DtVsUDFhe2SEnr1n9",
+  "obj": 10,
   "region": "Brabant"
  },
  {
@@ -207,6 +227,7 @@
   "kw": "toiturier waterloo",
   "city": "Waterloo",
   "link": "https://maps.app.goo.gl/gjoy4d5EjRw6GYcQA",
+  "obj": 10,
   "region": "Brabant"
  },
  {
@@ -217,6 +238,7 @@
   "kw": "toiturier rhode st genese",
   "city": "Rhode-St-Genèse",
   "link": "https://maps.app.goo.gl/bMsJqibo5MViSz3B7",
+  "obj": 10,
   "region": "Brabant"
  },
  {
@@ -227,6 +249,7 @@
   "kw": "toiturier seraing",
   "city": "Seraing",
   "link": "https://maps.app.goo.gl/idH12J7QEvjUai5k6",
+  "obj": 10,
   "region": "Liège"
  },
  {
@@ -237,6 +260,7 @@
   "kw": "toiturier rixensart",
   "city": "Rixensart",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJ_6EpofXXw0cRrMkp_UiqDbc",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -247,6 +271,7 @@
   "kw": "toiturier montvalezan",
   "city": "Montvalezan",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJQ2mOfJJpiUcRRrmUZokib1Y",
+  "obj": 10,
   "region": "France"
  },
  {
@@ -257,6 +282,7 @@
   "kw": "toiturier wavre",
   "city": "Wavre",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJq_FtSJDXw0cRFxvdcd2zJUc",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -267,6 +293,7 @@
   "kw": "toiturier wavre",
   "city": "Wavre",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJ0cKwP77Xw0cR7ud04DNsUPU",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -277,6 +304,7 @@
   "kw": "toiturier grez doiceau",
   "city": "Grez-Doiceau",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJJ9N6nu17wUcRtCREI_dFKbk",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -287,6 +315,7 @@
   "kw": "toiturier hoeilaart",
   "city": "Hoeilaart",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJ5cM6umfbw0cROZo43QJTsVo",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -297,6 +326,7 @@
   "kw": "toiturier kraainem",
   "city": "Kraainem",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJ1Tf6v-Pbw0cRpoet384bO4Y",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -307,6 +337,7 @@
   "kw": "toiturier wezembeek oppem",
   "city": "Wezembeek-Oppem",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJWerpA0fdw0cRuxHiDAH9Gj0",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -317,6 +348,7 @@
   "kw": "toiturier zaventem",
   "city": "Zaventem",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJRbihcyHfw0cRbgPO10nQxTM",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -327,6 +359,7 @@
   "kw": "toiturier bertem",
   "city": "Bertem",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJQR9FU79hwUcR3_hLtiW6cM4",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -337,6 +370,7 @@
   "kw": "toiturier woluwe saint pierre",
   "city": "Woluwe-Saint-Pierre",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJGUT07ijbw0cRpiiKElYxP7I",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -347,6 +381,7 @@
   "kw": "toiturier kortenberg",
   "city": "Kortenberg",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJ18B1_d_fw0cRG_bmdfjCEvs",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -357,6 +392,7 @@
   "kw": "toiturier oupeye",
   "city": "Oupeye",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJz376z1jxwEcRzSWY2F_B5Bk",
+  "obj": 10,
   "region": "Liège"
  },
  {
@@ -367,6 +403,7 @@
   "kw": "toiturier tervuren",
   "city": "Tervuren",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJUz5YmeDZw0cRk2oTCRb4YO0",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -377,6 +414,7 @@
   "kw": "toiturier auderghem",
   "city": "Auderghem",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJyUD0WJvbw0cRkvpkwBMX91Y",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -387,6 +425,7 @@
   "kw": "toiturier meaux",
   "city": "Meaux",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJU3hAUVyj6EcRhQ3N7YINVrA",
+  "obj": 10,
   "region": "France"
  },
  {
@@ -397,6 +436,7 @@
   "kw": "toiturier anderlecht",
   "city": "Anderlecht",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJV6j2CVLHw0cRbRGjyabvSgg",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -407,6 +447,7 @@
   "kw": "toiturier vise",
   "city": "Visé",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJU1sqXBXvwEcRraiEPqtUhcE",
+  "obj": 10,
   "region": "Liège"
  },
  {
@@ -417,6 +458,7 @@
   "kw": "toiturier ottignies louvain la neuve",
   "city": "Ottignies-Louvain-la-Neuve",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJWXuBUxB_wUcR_U-V-4w47ug",
+  "obj": 10,
   "region": "Brabant/Bxl"
  },
  {
@@ -427,6 +469,7 @@
   "kw": "toiturier halle",
   "city": "Halle",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJi8CytVjJw0cRxud_3czIbpE",
+  "obj": 10,
   "region": "Brabant/Bxl"
  }
 ]
