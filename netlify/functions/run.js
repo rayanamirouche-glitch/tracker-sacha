@@ -20,6 +20,25 @@ exports.handler = async (event) => {
       }).then(r => r.json());
       return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ q: q.q, results: (j.places || []).slice(0, 5), erreur: j.error || null }, null, 1) };
     }
+    if (q.type === 'purgerank') {
+      // Supprime les releves de classement d'une date. Sert a effacer une journee
+      // ecrite alors que SerpAPI etait en erreur : toutes les fiches y valent null,
+      // ce qui masque les positions reelles des jours precedents.
+      if (!q.date || !/^\d{4}-\d{2}-\d{2}$/.test(q.date)) {
+        return { statusCode: 400, body: JSON.stringify({ error: 'date requise, format ?type=purgerank&date=2026-09-01' }) };
+      }
+      const store = getStore('tracker');
+      let supprimes = 0;
+      for (let s = 0; s < FICHES.length; s += 10) {
+        const k = 'rankbatch/' + q.date + '/' + s;
+        const v = await store.get(k, { type: 'json' }).catch(() => null);
+        if (v) { await store.delete(k); supprimes++; }
+      }
+      const rank = (await store.get('rank', { type: 'json' })) || {};
+      let dansRank = false;
+      if (rank[q.date]) { delete rank[q.date]; await store.setJSON('rank', rank); dansRank = true; }
+      return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ ok: true, date: q.date, vagues_supprimees: supprimes, retire_du_blob_rank: dansRank }) };
+    }
     if (q.type === 'serpapi') {
       const K = process.env.SERPAPI_KEY;
       const j = await fetch('https://serpapi.com/account?api_key=' + K).then(r => r.json()).catch(e => ({ erreur: String(e) }));
