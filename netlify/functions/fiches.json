@@ -24,7 +24,7 @@
   "q": "ProCouverture la hulpe",
   "target": "procouverture la hulpe",
   "ll": "50.731,4.480",
-  "kw": "toiturier waterloo",
+  "kw": "toiturier la hulpe",
   "city": "La Hulpe",
   "link": "https://maps.app.goo.gl/vDzzNVkGbhpQ5DQh7",
   "region": "Brabant/Bxl"
@@ -64,7 +64,7 @@
   "q": "Perfect toiture Rixensart Père et fils artisan couvreur",
   "target": "perfect toiture rixensart",
   "ll": "50.712,4.526",
-  "kw": "toiturier wavre",
+  "kw": "toiturier rixensart",
   "city": "Rixensart",
   "link": "https://maps.app.goo.gl/VNmqCGkvPAx7mrv6A",
   "region": "Brabant/Bxl"
@@ -214,7 +214,7 @@
   "q": "RSG rénovation couvreur à Rhode",
   "target": "rsg renovation couvreur",
   "ll": "50.746,4.357",
-  "kw": "toiturier waterloo",
+  "kw": "toiturier rhode st genese",
   "city": "Rhode-St-Genèse",
   "link": "https://maps.app.goo.gl/bMsJqibo5MViSz3B7",
   "region": "Brabant"
@@ -234,7 +234,7 @@
   "q": "Toitures du Lac – couvreur à Rixensart, l’ardoise au sec",
   "target": "toitures du lac",
   "ll": "50.7265,4.5187",
-  "kw": "toiturier wavre",
+  "kw": "toiturier rixensart",
   "city": "Rixensart",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJ_6EpofXXw0cRrMkp_UiqDbc",
   "region": "Brabant/Bxl"
@@ -244,7 +244,7 @@
   "q": "Couvreur Montvalezan | Charpente & Toiture des Arcs sous la neige",
   "target": "couvreur montvalezan |",
   "ll": "45.6264,6.8499",
-  "kw": "couvreur bourg saint maurice",
+  "kw": "couvreur montvalezan",
   "city": "Montvalezan",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJQ2mOfJJpiUcRRrmUZokib1Y",
   "region": "France"
@@ -274,7 +274,7 @@
   "q": "Couvreur Grez-Doiceau · Maison Vandenberg Couverture toits de caractère",
   "target": "couvreur grez doiceau",
   "ll": "50.7384,4.6918",
-  "kw": "toiturier wavre",
+  "kw": "toiturier grez doiceau",
   "city": "Grez-Doiceau",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJJ9N6nu17wUcRtCREI_dFKbk",
   "region": "Brabant/Bxl"
@@ -284,7 +284,7 @@
   "q": "Hoeilaart 7ème ciel toiture",
   "target": "hoeilaart 7eme ciel",
   "ll": "50.7703,4.4691",
-  "kw": "toiturier bruxelles",
+  "kw": "toiturier hoeilaart",
   "city": "Hoeilaart",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJ5cM6umfbw0cROZo43QJTsVo",
   "region": "Brabant/Bxl"
@@ -294,7 +294,7 @@
   "q": "Renard toiture kraainem zinc et ardoise",
   "target": "renard toiture kraainem",
   "ll": "50.8373,4.472",
-  "kw": "toiturier bruxelles",
+  "kw": "toiturier kraainem",
   "city": "Kraainem",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJ1Tf6v-Pbw0cRpoet384bO4Y",
   "region": "Brabant/Bxl"
@@ -304,7 +304,7 @@
   "q": "Delvaux couverture . Wezembeek oppem",
   "target": "delvaux couverture wezembeek",
   "ll": "50.8429,4.4938",
-  "kw": "toiturier bruxelles",
+  "kw": "toiturier wezembeek oppem",
   "city": "Wezembeek-Oppem",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJWerpA0fdw0cRuxHiDAH9Gj0",
   "region": "Brabant/Bxl"
@@ -324,7 +324,7 @@
   "q": "Willems dakwerken / couvreur expérimenté de père en fils",
   "target": "willems dakwerken /",
   "ll": "50.8695,4.633",
-  "kw": "toiturier louvain",
+  "kw": "toiturier bertem",
   "city": "Bertem",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJQR9FU79hwUcR3_hLtiW6cM4",
   "region": "Brabant/Bxl"
@@ -344,7 +344,7 @@
   "q": "Ets de backer toiturier à Kortenberg",
   "target": "ets de backer",
   "ll": "50.8918,4.5422",
-  "kw": "toiturier louvain",
+  "kw": "toiturier kortenberg",
   "city": "Kortenberg",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJ18B1_d_fw0cRG_bmdfjCEvs",
   "region": "Brabant/Bxl"
@@ -354,7 +354,7 @@
   "q": "Faitage du château Oupeye toiture",
   "target": "faitage du chateau",
   "ll": "50.7066,5.6415",
-  "kw": "toiturier liege",
+  "kw": "toiturier oupeye",
   "city": "Oupeye",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJz376z1jxwEcRzSWY2F_B5Bk",
   "region": "Liège"
@@ -364,7 +364,7 @@
   "q": "Toit et moi . Tervuren toiture",
   "target": "toit et moi",
   "ll": "50.8215,4.5065",
-  "kw": "toiturier bruxelles",
+  "kw": "toiturier tervuren",
   "city": "Tervuren",
   "link": "https://www.google.com/maps/place/?q=place_id:ChIJUz5YmeDZw0cRk2oTCRb4YO0",
   "region": "Brabant/Bxl"
