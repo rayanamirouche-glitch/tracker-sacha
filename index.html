@@ -475,7 +475,9 @@ async function recolterTout(etat){
     await new Promise(function(r){ setTimeout(r, 4000); });
     msg('Lecture des résultats — ' + etat.releves + ' fiche(s) relevée(s), ' + etat.attente + ' en attente…');
     try {
-      const j = await (await fetch('/.netlify/functions/run?type=rankfetch')).json();
+      const r = await fetch('/.netlify/functions/run?type=rankfetch', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ jobs: etat.jobs }) });
+      const j = await r.json();
+      if (Array.isArray(j.jobs)) etat.jobs = j.jobs;
       etat.releves += (j.releves || 0); etat.attente = (j.en_attente || 0); etat.erreurs += (j.erreurs || 0); if (j.message) etat.motif = j.message;
       Object.keys(j.parMotCle || {}).forEach(function(n){ const m = j.parMotCle[n]; res.push(n.split(' ').slice(0, 3).join(' ') + ' ' + Object.keys(m).map(function(k){ return k + (m[k] === null ? ' —' : ' #' + m[k]); }).join(', ')); });
     } catch (e) {}
@@ -490,12 +492,12 @@ async function runRankSel(){
   var rech = 0; DATA.fiches.forEach(function(f){ if (SEL.has(f.name)) rech += kwsOf(f).length; });
   if (!confirm('Relever le classement de ' + names.length + ' fiche(s) ? (' + rech + ' recherche(s) SerpAPI)')) return;
   $('btnSel').disabled = true;
-  const etat = { releves: 0, attente: 0, erreurs: 0, motif: null };
+  const etat = { jobs: [], releves: 0, attente: 0, erreurs: 0, motif: null };
   try {
     msg('Envoi des recherches — ' + names.length + ' fiche(s)…');
     const r = await fetch('/.netlify/functions/run?type=rankselect', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ names: names }) });
     const j = await r.json();
-    etat.attente = (j.en_attente || 0); etat.erreurs += (j.erreurs || 0); if (j.message) etat.motif = j.message;
+    etat.jobs = j.jobs || []; etat.attente = (j.en_attente || 0); etat.erreurs += (j.erreurs || 0); if (j.message) etat.motif = j.message;
     const res = await recolterTout(etat);
     if (etat.releves === 0) msg('Aucun classement relevé' + (etat.motif ? ' — ' + etat.motif : '') + '. Les positions affichées datent du dernier relevé réussi.');
     else msg('Classement ✓ ' + res.join(' · ') + (etat.erreurs ? ' — ' + etat.erreurs + ' en échec' + (etat.motif ? ' (' + etat.motif + ')' : '') : ''));
@@ -815,7 +817,7 @@ async function runRank(){
   const n = (DATA && DATA.fiches ? DATA.fiches.length : 43);
   const waves = [];
   for (let s = 0; s < n; s += 10) waves.push(s);
-  const etat = { releves: 0, attente: 0, erreurs: 0, motif: null };
+  const etat = { jobs: [], releves: 0, attente: 0, erreurs: 0, motif: null };
   try{
     msg('Envoi des recherches — vague 1 / ' + waves.length + '…');
     const r = await fetch('/.netlify/functions/run?type=rank&start=0' + (admin ? '&force=1' : ''));
@@ -825,7 +827,7 @@ async function runRank(){
       $('btnRank').disabled = false; return;
     }
     const compte = async (rep) => {
-      try { const j = await rep.json(); etat.attente += (j.en_attente || 0); etat.erreurs += (j.erreurs || 0); if (j.message) etat.motif = j.message; }
+      try { const j = await rep.json(); etat.jobs = etat.jobs.concat(j.jobs || []); etat.attente += (j.en_attente || 0); etat.erreurs += (j.erreurs || 0); if (j.message) etat.motif = j.message; }
       catch (e) { etat.erreurs++; }
     };
     await compte(r);

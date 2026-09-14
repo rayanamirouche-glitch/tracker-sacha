@@ -343,8 +343,11 @@ exports.handler = async (event) => {
       const rk = await core.snapRank(parseInt(q.start || '0', 10), baseUrl);
       return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify(rk) };
     } else if (q.type === 'rankfetch') {
-      // Lecture des resultats des recherches soumises (rank / rankselect) : a rappeler jusqu'a en_attente = 0.
-      const rk = await core.recolter(process.env.SERPAPI_KEY);
+      // Lecture des resultats des recherches soumises (rank / rankselect) : POST {jobs} rendu par ces
+      // appels, a rappeler avec la file renvoyee jusqu'a en_attente = 0.
+      let payload = {};
+      try { payload = JSON.parse(event.body || '{}'); } catch (e) { payload = {}; }
+      const rk = await core.recolter(process.env.SERPAPI_KEY, payload.jobs || []);
       return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify(rk) };
     } else {
       return { statusCode: 400, body: JSON.stringify({ error: 'type avis|rank|relink|diag requis' }) };

@@ -15,9 +15,7 @@ async function chargerFiches() {
 const REGION = 'Brabant/Bxl';
 const { getStore } = require('@netlify/blobs');
 
-// Lecture en coherence forte : par defaut Netlify Blobs sert une lecture « eventuelle » qui peut
-// dater de plusieurs secondes, et une file ecrite par une fonction etait relue vide par la suivante.
-const store = () => getStore({ name: 'tracker', consistency: 'strong' });
+const store = () => getStore('tracker');
 const today = () => new Date().toISOString().slice(0, 10);
 const to = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms))]);
 
@@ -215,10 +213,11 @@ function posDe(f, j) {
   const m = pickMatch(rs, r => r.title, normName(f.target));
   return m ? m.idx + 1 : null;
 }
-const JOBS_KEY = () => 'rankjobs/' + today();
 const ATTENTE_MAX_MS = 150000;   // au-dela, une recherche jamais revenue est comptee en echec
 // Soumet toutes les recherches (fiche x mot-cle) d'une liste de fiches, sans attendre Google.
 // cle = vague d'ecriture ('0', '10', … ou 'sel') : le resultat ira dans rankbatch/<jour>/<cle>.
+// La file des recherches n'est PAS stockee dans un blob (lecture « eventuelle » : une file ecrite par
+// une fonction etait relue vide par la suivante) : elle est rendue a la page, qui la renvoie a rankfetch.
 async function soumettre(list, K, cle) {
   const over = await kwOverrides();
   const jobs = []; let erreurs = 0, message = null;
@@ -237,12 +236,13 @@ async function soumettre(list, K, cle) {
   }));
   return { jobs: jobs, erreurs: erreurs, message: message };
 }
-// Lit les resultats prets dans l'archive SerpAPI et ecrit chaque fiche complete (tous ses mots-cles)
-// dans rankbatch/rankkw du jour. Les recherches encore en cours restent en attente pour l'appel suivant.
-async function recolter(K) {
+// Lit dans l'archive SerpAPI les recherches encore en cours, puis ecrit chaque vague dont TOUTES les
+// fiches sont pretes dans rankbatch/rankkw du jour (une seule ecriture par vague, jamais de
+// relecture-fusion sur une lecture eventuelle). Rend la file mise a jour a la page.
+async function recolter(K, jobs) {
   await chargerFiches();
   const parNom = {}; FICHES.forEach(f => { parNom[f.name] = f; });
-  const jobs = await getJSON(JOBS_KEY(), []);
+  jobs = Array.isArray(jobs) ? jobs : [];
   let erreurs = 0, message = null;
   await Promise.all(jobs.filter(j => !j.fait).map(async j => {
     try {
@@ -257,35 +257,37 @@ async function recolter(K) {
       j.fait = true; j.pos = parNom[j.name] ? posDe(parNom[j.name], r) : null;
     } catch (e) { if (Date.now() - (j.t || 0) > ATTENTE_MAX_MS) { j.fait = true; j.err = 'timeout'; } }
   }));
-  const parFiche = {};
-  jobs.forEach(j => { (parFiche[j.name] = parFiche[j.name] || []).push(j); });
-  const prets = {}, kwprets = {}, restants = [];
-  for (const [name, L] of Object.entries(parFiche)) {
-    if (!L.every(j => j.fait)) { restants.push.apply(restants, L); continue; }
-    const ok = L.filter(j => !j.err);
-    L.filter(j => j.err).forEach(j => { erreurs++; message = j.err; });
-    if (!ok.length) continue;
-    const cle = L[0].cle;
-    kwprets[cle] = kwprets[cle] || {}; kwprets[cle][name] = {};
-    ok.forEach(j => { kwprets[cle][name][j.kw] = (j.pos === undefined ? null : j.pos); });
-    const p = ok.find(j => j.i === 0) || ok[0];
-    prets[cle] = prets[cle] || {}; prets[cle][name] = (p.pos === undefined ? null : p.pos);
-  }
-  for (const cle of Object.keys(prets)) {
-    for (const [k, v] of [['rankbatch/' + today() + '/' + cle, prets[cle]], ['rankkw/' + today() + '/' + cle, kwprets[cle]]]) {
-      const cur = await getJSON(k, {});
-      await setJSON(k, Object.assign(cur, v));
+  const parCle = {};
+  jobs.forEach(j => { (parCle[j.cle] = parCle[j.cle] || []).push(j); });
+  const positions = {}, parMotCle = {}; let releves = 0;
+  for (const [cle, L] of Object.entries(parCle)) {
+    if (L.some(j => j.ecrit) || !L.every(j => j.fait)) continue;   // deja ecrite, ou pas encore complete
+    const snap = {}, snapkw = {};
+    const parFiche = {};
+    L.forEach(j => { (parFiche[j.name] = parFiche[j.name] || []).push(j); });
+    for (const [name, J] of Object.entries(parFiche)) {
+      const ok = J.filter(j => !j.err);
+      J.filter(j => j.err).forEach(j => { erreurs++; message = j.err; });
+      if (!ok.length) continue;
+      snapkw[name] = {}; ok.forEach(j => { snapkw[name][j.kw] = (j.pos === undefined ? null : j.pos); });
+      const p = ok.find(j => j.i === 0) || ok[0];
+      snap[name] = (p.pos === undefined ? null : p.pos);
     }
+    if (Object.keys(snap).length) {
+      if (cle === 'sel') {   // les cochees s'accumulent dans la journee : fusion avec l'existant
+        for (const [k, v] of [['rankbatch/' + today() + '/sel', snap], ['rankkw/' + today() + '/sel', snapkw]]) {
+          const cur = await getJSON(k, {}); await setJSON(k, Object.assign(cur, v));
+        }
+      } else {
+        await setJSON('rankbatch/' + today() + '/' + cle, snap);
+        await setJSON('rankkw/' + today() + '/' + cle, snapkw);
+      }
+      Object.assign(positions, snap); Object.assign(parMotCle, snapkw); releves += Object.keys(snap).length;
+    }
+    L.forEach(j => { j.ecrit = true; });
   }
-  await setJSON(JOBS_KEY(), restants);
-  const positions = Object.assign({}, ...Object.values(prets)), parMotCle = Object.assign({}, ...Object.values(kwprets));
-  return { releves: Object.keys(positions).length, en_attente: Object.keys(parFiche).filter(n => restants.some(j => j.name === n)).length,
-           erreurs: erreurs, message: message, positions: positions, parMotCle: parMotCle };
-}
-// Ajoute les recherches soumises a la file du jour ; une fiche resoumise remplace son attente precedente.
-async function enfiler(jobs, noms) {
-  const cur = await getJSON(JOBS_KEY(), []);
-  await setJSON(JOBS_KEY(), cur.filter(j => !noms.has(j.name)).concat(jobs));
+  const attente = new Set(jobs.filter(j => !j.fait).map(j => j.name)).size;
+  return { jobs: jobs, releves: releves, en_attente: attente, erreurs: erreurs, message: message, positions: positions, parMotCle: parMotCle };
 }
 
 async function snapRank(start, baseUrl) {
@@ -295,9 +297,8 @@ async function snapRank(start, baseUrl) {
   start = start || 0;
   const wave = FICHES.slice(start, start + WAVE);
   const r = await soumettre(wave, K, String(start));
-  await enfiler(r.jobs, new Set(wave.map(f => f.name)));
   if (start === 0 && r.jobs.length) await setJSON('rankMeta', { last: new Date().toISOString() });
-  return { soumis: r.jobs.length, total: wave.length, erreurs: r.erreurs, message: r.message, en_attente: new Set(r.jobs.map(j => j.name)).size, releves: 0 };
+  return { jobs: r.jobs, soumis: r.jobs.length, total: wave.length, erreurs: r.erreurs, message: r.message, en_attente: new Set(r.jobs.map(j => j.name)).size, releves: 0 };
 }
 
 // Classement a la demande des seules fiches cochees (POST {names}). Soumission immediate, resultats
@@ -309,8 +310,7 @@ async function snapRankSel(names) {
   const voulu = new Set(names || []);
   const sel = FICHES.filter(f => voulu.has(f.name)).slice(0, 40);
   const r = await soumettre(sel, K, 'sel');
-  await enfiler(r.jobs, new Set(sel.map(f => f.name)));
-  return { soumis: r.jobs.length, total: sel.length, erreurs: r.erreurs, message: r.message, en_attente: new Set(r.jobs.map(j => j.name)).size, releves: 0 };
+  return { jobs: r.jobs, soumis: r.jobs.length, total: sel.length, erreurs: r.erreurs, message: r.message, en_attente: new Set(r.jobs.map(j => j.name)).size, releves: 0 };
 }
 
 async function rankHist() {
