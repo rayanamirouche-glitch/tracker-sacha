@@ -221,27 +221,26 @@ const ATTENTE_MAX_MS = 300000;   // au-dela (5 min), une recherche jamais revenu
 // une fonction etait relue vide par la suivante) : elle est rendue a la page, qui la renvoie a rankfetch.
 async function soumettre(list, K, cle) {
   const over = await kwOverrides();
+  const taches = [];
+  list.forEach(f => { kwsOf(f, over).forEach((kw, i) => { taches.push({ f: f, kw: kw, i: i }); }); });
   const jobs = []; let erreurs = 0, message = null;
-  await Promise.all(list.map(async f => {
-    const kws = kwsOf(f, over);
-    await Promise.all(kws.map(async (kw, i) => {
-      try {
-        // SerpAPI repond parfois « couldn't get valid results, try again later » a la soumission :
-        // deux nouvelles tentatives espacees d'une seconde avant de compter un echec.
-        let j = null;
-        for (let essai = 0; essai < 3; essai++) {
-          if (essai) await new Promise(r => setTimeout(r, 1000));
-          j = await to(fetch(serpUrl(f, kw, K)).then(r => r.json()), 5000);
-          if (j && !j.error) break;
-        }
-        if (!j || j.error) { erreurs++; message = (j && j.error) || 'reponse vide'; return; }
-        const st = j.search_metadata || {};
-        const job = { name: f.name, kw: kw, i: i, id: st.id, cle: cle, t: Date.now() };
-        if (j.local_results || /success/i.test(st.status || '')) { job.fait = true; job.pos = posDe(f, j); }
-        jobs.push(job);
-      } catch (e) { erreurs++; message = String(e && e.message ? e.message : e); }
+  // Soumission par petits paquets : 30 recherches lancees d'un coup, SerpAPI en refusait la moitie
+  // (« We couldn't get valid results… try again later »). Un refus est retente deux fois.
+  for (let k = 0; k < taches.length; k += 5) {
+    await Promise.all(taches.slice(k, k + 5).map(async t => {
+      let j = null;
+      for (let essai = 0; essai < 3; essai++) {
+        if (essai) await new Promise(r => setTimeout(r, 1500));
+        try { j = await to(fetch(serpUrl(t.f, t.kw, K)).then(r => r.json()), 5000); } catch (e) { j = { error: String(e && e.message ? e.message : e) }; }
+        if (j && !j.error) break;
+      }
+      if (!j || j.error) { erreurs++; message = (j && j.error) || 'reponse vide'; return; }
+      const st = j.search_metadata || {};
+      const job = { name: t.f.name, kw: t.kw, i: t.i, id: st.id, cle: cle, t: Date.now() };
+      if (j.local_results || /success/i.test(st.status || '')) { job.fait = true; job.pos = posDe(t.f, j); }
+      jobs.push(job);
     }));
-  }));
+  }
   return { jobs: jobs, erreurs: erreurs, message: message };
 }
 // Lit dans l'archive SerpAPI les recherches encore en cours, puis ecrit chaque vague dont TOUTES les
@@ -311,8 +310,10 @@ async function snapRank(start, baseUrl) {
   await chargerFiches();
   const K = process.env.SERPAPI_KEY;
   start = start || 0;
-  const wave = FICHES.slice(start, start + WAVE);
-  const r = await soumettre(wave, K, String(start));
+  // La page envoie des vagues de 5 fiches (15 recherches max par appel) ; la cle d'ecriture reste
+  // alignee sur WAVE (10) pour que rankHist retrouve les blobs : deux demi-vagues partagent une cle.
+  const wave = FICHES.slice(start, start + 5);
+  const r = await soumettre(wave, K, String(Math.floor(start / WAVE) * WAVE));
   if (start === 0 && r.jobs.length) await setJSON('rankMeta', { last: new Date().toISOString() });
   return { jobs: r.jobs, soumis: r.jobs.length, total: wave.length, erreurs: r.erreurs, message: r.message, en_attente: new Set(r.jobs.map(j => j.name)).size, releves: 0 };
 }
