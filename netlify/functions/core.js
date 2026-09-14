@@ -15,7 +15,9 @@ async function chargerFiches() {
 const REGION = 'Brabant/Bxl';
 const { getStore } = require('@netlify/blobs');
 
-const store = () => getStore('tracker');
+// Lecture en coherence forte : par defaut Netlify Blobs sert une lecture « eventuelle » qui peut
+// dater de plusieurs secondes, et une file ecrite par une fonction etait relue vide par la suivante.
+const store = () => getStore({ name: 'tracker', consistency: 'strong' });
 const today = () => new Date().toISOString().slice(0, 10);
 const to = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms))]);
 
