@@ -215,7 +215,7 @@ function posDe(f, j) {
   const m = pickMatch(rs, r => r.title, normName(f.target));
   return m ? m.idx + 1 : null;
 }
-const ATTENTE_MAX_MS = 300000;   // au-dela (5 min), une recherche jamais revenue est comptee en echec
+const ATTENTE_MAX_MS = 180000;   // au-dela (3 min ; Google mobile repond en 30-60 s), la recherche est comptee en echec et resoumise
 // Soumet toutes les recherches (fiche x mot-cle) d'une liste de fiches, sans attendre Google.
 // cle = vague d'ecriture ('0', '10', … ou 'sel') : le resultat ira dans rankbatch/<jour>/<cle>.
 // La file des recherches n'est PAS stockee dans un blob (lecture « eventuelle » : une file ecrite par
