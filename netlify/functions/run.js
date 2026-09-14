@@ -151,11 +151,12 @@ exports.handler = async (event) => {
       if (!f) return { statusCode: 400, body: JSON.stringify({ error: 'index hors bornes', total: FICHES.length }) };
       const over = (await getStore('tracker').get('kw', { type: 'json' }).catch(() => null)) || {};
       const kwEff = q.kw || String(over[f.name] || f.kw).split(/\s*[|;]\s*/)[0].trim();
-      const u = 'https://serpapi.com/search.json?engine=google&q=' + encodeURIComponent(kwEff) + '&lat=' + encodeURIComponent(String(f.ll).split(',')[0]) + '&lon=' + encodeURIComponent(String(f.ll).split(',')[1]) + '&device=mobile&hl=fr&gl=' + core.paysDe(f) + '&google_domain=google.' + core.paysDe(f) + '&no_cache=true&api_key=' + K;
-      const j = await fetch(u).then(r => r.json()).catch(e => ({ fetch_error: String(e) }));
+      const u = 'https://serpapi.com/search.json?engine=google&q=' + encodeURIComponent(kwEff) + (q.engine === 'google_local' ? '' : '&lat=' + encodeURIComponent(String(f.ll).split(',')[0]) + '&lon=' + encodeURIComponent(String(f.ll).split(',')[1])) + (q.loc ? '&location=' + encodeURIComponent(q.loc) : '') + '&device=mobile&hl=fr&gl=' + core.paysDe(f) + '&google_domain=google.' + core.paysDe(f) + (q.nocache === '0' ? '' : '&no_cache=true') + (q.async === '1' ? '&async=true' : '') + '&api_key=' + K;
+      const t0 = Date.now();
+      const j = await fetch(q.engine === 'google_local' ? u.replace('engine=google&', 'engine=google_local&') : u).then(r => r.json()).catch(e => ({ fetch_error: String(e) }));
       const rs = ((j && j.local_results && j.local_results.places) || []).filter(x => !(x.sponsored || x.is_paid || x.type === 'ad'));
       return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({
-        fiche: f.name, index: i, kw: kwEff, kw_fichier: f.kw, ll: f.ll,
+        fiche: f.name, index: i, kw: kwEff, kw_fichier: f.kw, ll: f.ll, duree_ms: Date.now() - t0, engine: q.engine || 'google',
         cle_serpapi_presente: !!K,
         erreur: j.error || j.fetch_error || null,
         statut: (j.search_metadata && j.search_metadata.status) || null,

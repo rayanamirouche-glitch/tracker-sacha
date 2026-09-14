@@ -210,7 +210,7 @@ function serpUrl(f, kw, K) {
     + '&device=mobile&hl=fr&gl=' + gl + '&google_domain=google.' + gl + '&async=true&api_key=' + K;
 }
 function posDe(f, j) {
-  const rs = ((j && j.local_results && j.local_results.places) || []).filter(x => !(x.sponsored || x.is_paid || x.type === 'ad'));
+  const rs = ((j && j.local_results && (Array.isArray(j.local_results) ? j.local_results : j.local_results.places)) || []).filter(x => !(x.sponsored || x.is_paid || x.type === 'ad'));
   const m = pickMatch(rs, r => r.title, normName(f.target));
   return m ? m.idx + 1 : null;
 }
