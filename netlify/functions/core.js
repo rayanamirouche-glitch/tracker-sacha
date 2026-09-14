@@ -248,6 +248,7 @@ async function recolter(K, jobs) {
     try {
       const r = await to(fetch('https://serpapi.com/searches/' + j.id + '.json?api_key=' + K).then(x => x.json()), 8000);
       const st = String((r && r.search_metadata && r.search_metadata.status) || '');
+      j.st = st || (r && r.error ? 'err:' + String(r.error).slice(0, 60) : 'vide');   // diagnostic visible dans la file
       if (r && r.error && !/processing|queued/i.test(String(r.error))) { j.fait = true; j.err = r.error; return; }
       if (!r || !r.search_metadata || /processing|queued/i.test(st)) {
         if (Date.now() - (j.t || 0) > ATTENTE_MAX_MS) { j.fait = true; j.err = 'timeout'; }
