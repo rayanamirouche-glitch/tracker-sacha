@@ -226,7 +226,14 @@ async function soumettre(list, K, cle) {
     const kws = kwsOf(f, over);
     await Promise.all(kws.map(async (kw, i) => {
       try {
-        const j = await to(fetch(serpUrl(f, kw, K)).then(r => r.json()), 8000);
+        // SerpAPI repond parfois « couldn't get valid results, try again later » a la soumission :
+        // deux nouvelles tentatives espacees d'une seconde avant de compter un echec.
+        let j = null;
+        for (let essai = 0; essai < 3; essai++) {
+          if (essai) await new Promise(r => setTimeout(r, 1000));
+          j = await to(fetch(serpUrl(f, kw, K)).then(r => r.json()), 5000);
+          if (j && !j.error) break;
+        }
         if (!j || j.error) { erreurs++; message = (j && j.error) || 'reponse vide'; return; }
         const st = j.search_metadata || {};
         const job = { name: f.name, kw: kw, i: i, id: st.id, cle: cle, t: Date.now() };

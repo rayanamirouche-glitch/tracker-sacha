@@ -837,6 +837,18 @@ async function runRank(){
       await compte(await fetch('/.netlify/functions/run?type=rank&force=1&start=' + waves[i]));
     }
     await recolterTout(etat);
+    // Fiches sans position (soumission refusee ou recherche en erreur) : une seconde chance en bloc.
+    const manquantes = DATA.fiches.map(function(f){ return f.name; }).filter(function(n){ return !etat.jobs.some(function(j){ return j.name === n && j.fait && !j.err; }); });
+    if (manquantes.length && manquantes.length < n) {
+      msg('Seconde tentative pour ' + manquantes.length + ' fiche(s)…');
+      try {
+        const r2 = await fetch('/.netlify/functions/run?type=rankselect', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ names: manquantes.slice(0, 40) }) });
+        const j2 = await r2.json();
+        etat.jobs = j2.jobs || []; etat.attente = (j2.en_attente || 0); etat.erreurs = 0; if (j2.message) etat.motif = j2.message;
+        await recolterTout(etat);
+        etat.erreurs += manquantes.length - etat.jobs.filter(function(j){ return j.fait && !j.err && j.i === 0; }).length;
+      } catch (e) {}
+    }
     if (etat.releves === 0) msg('Aucun classement relevé' + (etat.motif ? ' — ' + etat.motif : '') + '. Les positions affichées datent du dernier relevé réussi.');
     else if (etat.erreurs || etat.attente) msg(etat.releves + ' fiche(s) relevée(s), ' + (etat.erreurs + etat.attente) + ' en échec' + (etat.motif ? ' — ' + etat.motif : '') + '. Les autres gardent leur dernière position connue.');
     else msg('Classements à jour ✓ (' + etat.releves + ' fiches)');
