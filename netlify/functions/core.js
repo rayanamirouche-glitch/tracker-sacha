@@ -206,7 +206,8 @@ function serpUrl(f, kw, K) {
   const [lat, lon] = String(f.ll || '').split(',');
   const gl = paysDe(f);
   return 'https://serpapi.com/search.json?engine=google&q=' + encodeURIComponent(kw) + '&lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lon)
-    + '&device=mobile&hl=fr&gl=' + gl + '&google_domain=google.' + gl + '&no_cache=true&async=true&api_key=' + K;
+    // Pas de no_cache avec async : SerpAPI l'interdit et les recherches restaient bloquees en « Processing ».
+    + '&device=mobile&hl=fr&gl=' + gl + '&google_domain=google.' + gl + '&async=true&api_key=' + K;
 }
 function posDe(f, j) {
   const rs = ((j && j.local_results && j.local_results.places) || []).filter(x => !(x.sponsored || x.is_paid || x.type === 'ad'));
