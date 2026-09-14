@@ -213,7 +213,7 @@ function posDe(f, j) {
   const m = pickMatch(rs, r => r.title, normName(f.target));
   return m ? m.idx + 1 : null;
 }
-const ATTENTE_MAX_MS = 150000;   // au-dela, une recherche jamais revenue est comptee en echec
+const ATTENTE_MAX_MS = 300000;   // au-dela (5 min), une recherche jamais revenue est comptee en echec
 // Soumet toutes les recherches (fiche x mot-cle) d'une liste de fiches, sans attendre Google.
 // cle = vague d'ecriture ('0', '10', … ou 'sel') : le resultat ira dans rankbatch/<jour>/<cle>.
 // La file des recherches n'est PAS stockee dans un blob (lecture « eventuelle » : une file ecrite par
@@ -261,20 +261,24 @@ async function recolter(K, jobs) {
   jobs.forEach(j => { (parCle[j.cle] = parCle[j.cle] || []).push(j); });
   const positions = {}, parMotCle = {}; let releves = 0;
   for (const [cle, L] of Object.entries(parCle)) {
-    if (L.some(j => j.ecrit) || !L.every(j => j.fait)) continue;   // deja ecrite, ou pas encore complete
-    const snap = {}, snapkw = {};
+    // Une fiche est prete quand tous ses mots-cles sont revenus. Des qu'une vague a du nouveau,
+    // on REECRIT sa cle avec tout ce qui est pret (la page detient l'etat complet) : pas de
+    // relecture-fusion sur un blob eventuel. Les cochees ('sel') s'accumulent dans la journee.
     const parFiche = {};
     L.forEach(j => { (parFiche[j.name] = parFiche[j.name] || []).push(j); });
+    const snap = {}, snapkw = {}; let nouveau = false;
     for (const [name, J] of Object.entries(parFiche)) {
+      if (!J.every(j => j.fait)) continue;
       const ok = J.filter(j => !j.err);
-      J.filter(j => j.err).forEach(j => { erreurs++; message = j.err; });
+      if (!J.every(j => j.ecrit)) { nouveau = true; J.forEach(j => { if (j.err && !j.ecrit) { erreurs++; message = j.err; } }); }
       if (!ok.length) continue;
       snapkw[name] = {}; ok.forEach(j => { snapkw[name][j.kw] = (j.pos === undefined ? null : j.pos); });
       const p = ok.find(j => j.i === 0) || ok[0];
       snap[name] = (p.pos === undefined ? null : p.pos);
     }
+    if (!nouveau) continue;
     if (Object.keys(snap).length) {
-      if (cle === 'sel') {   // les cochees s'accumulent dans la journee : fusion avec l'existant
+      if (cle === 'sel') {
         for (const [k, v] of [['rankbatch/' + today() + '/sel', snap], ['rankkw/' + today() + '/sel', snapkw]]) {
           const cur = await getJSON(k, {}); await setJSON(k, Object.assign(cur, v));
         }
@@ -282,9 +286,12 @@ async function recolter(K, jobs) {
         await setJSON('rankbatch/' + today() + '/' + cle, snap);
         await setJSON('rankkw/' + today() + '/' + cle, snapkw);
       }
-      Object.assign(positions, snap); Object.assign(parMotCle, snapkw); releves += Object.keys(snap).length;
     }
-    L.forEach(j => { j.ecrit = true; });
+    for (const [name, J] of Object.entries(parFiche)) {
+      if (!J.every(j => j.fait) || J.every(j => j.ecrit)) continue;
+      J.forEach(j => { j.ecrit = true; });
+      if (snap[name] !== undefined) { positions[name] = snap[name]; parMotCle[name] = snapkw[name]; releves++; }
+    }
   }
   const attente = new Set(jobs.filter(j => !j.fait).map(j => j.name)).size;
   return { jobs: jobs, releves: releves, en_attente: attente, erreurs: erreurs, message: message, positions: positions, parMotCle: parMotCle };

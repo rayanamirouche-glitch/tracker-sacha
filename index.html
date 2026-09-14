@@ -471,7 +471,8 @@ async function editLiv(i){
 // Google et etait tuee a 10 s : la moitie des fiches sortait en « timeout ».
 async function recolterTout(etat){
   const res = [];
-  for (let t = 0; t < 32 && etat.attente > 0; t++) {
+  // Google met parfois plusieurs minutes a repondre via la file SerpAPI : on lit jusqu'a 5 min.
+  for (let t = 0; t < 75 && etat.attente > 0; t++) {
     await new Promise(function(r){ setTimeout(r, 4000); });
     msg('Lecture des résultats — ' + etat.releves + ' fiche(s) relevée(s), ' + etat.attente + ' en attente…');
     try {
