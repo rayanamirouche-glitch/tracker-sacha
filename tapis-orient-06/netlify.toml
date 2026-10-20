@@ -1,0 +1,17 @@
+# Site vitrine : déployer ce dossier comme un site Netlify à part
+# (Site settings → Build & deploy → Base directory = tapis-orient-06, Publish directory = tapis-orient-06).
+# Le formulaire "devis-tapis" est pris en charge par Netlify Forms sans fonction.
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
