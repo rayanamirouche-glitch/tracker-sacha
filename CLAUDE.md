@@ -16,7 +16,7 @@ Rayan est le propriétaire (R.Consulting). Sacha est le client qui consulte le t
 | `portal.js`, `portal.css` | Onglet « Commandes » du portail client. |
 | `netlify/functions/core.js` | Le cœur : chargement des fiches, Google Places, DataForSEO, lecture et écriture des blobs. |
 | `netlify/functions/run.js` | Endpoint principal appelé par la page via `?type=…` (avis, avis1, rank, rankselect, rankfetch, addfiche, delfiche, setkw, setobj, setliv, lookup, relink, rankdiag, diag, purge…). |
-| `netlify/functions/fiches.json` | Liste des fiches suivies : source de vérité, complétée par le blob `ajouts`. Champs : name, q, target, ll, kw, city, link, region, et parfois obj / base. |
+| `netlify/functions/fiches.json` | Liste des fiches suivies : source de vérité, complétée par le blob `ajouts`. Champs : name, q, target, ll, kw, city, link, region, et parfois obj / base. **Triée par région, ville, nom** (`node scripts/fiches.js trier`). Régions : Bruxelles, Brabant wallon, Brabant flamand, Liège, France, Suisse. |
 | `netlify/functions/count3j.js` | Compteur J-2 / J-1 / J des avis publiés, lu chez DataForSEO (asynchrone). |
 | `netlify/functions/data.js` | Rend toutes les données (`core.allData`) à la page. |
 | `netlify/functions/setbase.js` | Recale la base objectif d'une fiche (avis déjà postés à la main). |
@@ -25,7 +25,7 @@ Rayan est le propriétaire (R.Consulting). Sacha est le client qui consulte le t
 | `netlify/functions/snapshot_*.js` | Anciens points d'entrée de relevé planifié. **Plus aucune planification** (voir règles). |
 | `netlify/functions/places.js`, `rank.js` | Anciens proxys Places et SerpAPI, quasi inutilisés. Ne pas s'appuyer dessus. |
 
-| `scripts/fiches.js` | Ajouter / retirer / modifier / lister une fiche en ligne de commande, avec vérification. |
+| `scripts/fiches.js` | Ajouter / retirer / modifier / lister / trier les fiches en ligne de commande, avec vérification. Déduit la région de la ville. |
 | `scripts/verif-fiches.js` | Vérifie `fiches.json` : doublons, champs manquants, formats, règles de mot-clé. |
 | `.claude/skills/fiches/` | Skill « fiches » : la marche à suivre pour toute modification du parc de fiches. |
 
@@ -71,6 +71,7 @@ Stripe Checkout (`/paiement`) et la notification WhatsApp (`/notif`) passent par
 5. **Tarifs des commandes** (13/09/2026) : 4 € l'avis, 8 € l'avis avec photo, 10 € à partir de 3 photos. Paiement par tranches (20 par défaut). Une commande sur une fiche suivie augmente son objectif d'autant.
 6. **Pas de requête gaspillée** : vagues de 5 fiches, paquets, reprises limitées, cooldown de 48 h sur le classement complet. Les fiches cochées (`rankselect`) ne touchent pas au cooldown.
 7. **Une fiche retirée de `fiches.json` garde son historique** dans les blobs mais est écartée à la lecture.
+8. **Ne jamais renommer une fiche** (`name`) : les blobs sont indexés par ce nom, l'historique serait perdu. C'est pour ça que « Rénovation de lextrême … 2000 ans » garde son espace final.
 
 ## Pièges connus (appris le 14/09/2026, ne pas y retomber)
 

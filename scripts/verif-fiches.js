@@ -4,7 +4,7 @@
 //         node scripts/verif-fiches.js --strict   (les avertissements comptent comme des erreurs)
 const path = require('path');
 const FICHIER = path.join(__dirname, '..', 'netlify', 'functions', 'fiches.json');
-const REGIONS = ['Brabant/Bxl', 'Brabant', 'Liège', 'France', 'Suisse'];
+const REGIONS = ['Bruxelles', 'Brabant wallon', 'Brabant flamand', 'Liège', 'France', 'Suisse'];
 const LIEN = /^https?:\/\/(maps\.app\.goo\.gl|goo\.gl|www\.google\.[a-z.]+\/maps|maps\.google\.[a-z.]+)\//;
 const strict = process.argv.includes('--strict');
 
@@ -55,6 +55,10 @@ fiches.forEach((f, i) => {
   const inconnus = Object.keys(f).filter(k => !['name', 'q', 'target', 'll', 'kw', 'city', 'link', 'region', 'obj', 'base', 'livres'].includes(k));
   if (inconnus.length) warn(f, `champs inconnus : ${inconnus.join(', ')}`);
 });
+
+const ordre = fiches.map(f => [REGIONS.indexOf(f.region), norm(f.city), norm(f.name)]);
+const desordre = ordre.findIndex((o, i) => i > 0 && (ordre[i - 1][0] > o[0] || (ordre[i - 1][0] === o[0] && (ordre[i - 1][1].localeCompare(o[1], 'fr') > 0 || (ordre[i - 1][1] === o[1] && ordre[i - 1][2].localeCompare(o[2], 'fr') > 0)))));
+if (desordre > 0) avert.push(`[${fiches[desordre].name}] fichier non trié à partir de la fiche n°${desordre + 1} : lancer node scripts/fiches.js trier`);
 
 const parRegion = fiches.reduce((a, f) => { a[f.region] = (a[f.region] || 0) + 1; return a; }, {});
 console.log(`${fiches.length} fiches · ${Object.entries(parRegion).map(([r, n]) => `${r} ${n}`).join(' · ')}`);

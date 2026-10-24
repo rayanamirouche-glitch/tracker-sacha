@@ -11,6 +11,7 @@ description: Ajouter, retirer, modifier ou vérifier des fiches dans netlify/fun
 
 ```
 node scripts/fiches.js lister [--region "Liège"]
+node scripts/fiches.js trier
 node scripts/fiches.js ajouter --name "Nom exact de la fiche Google" --city "Wavre" --link "https://maps.app.goo.gl/xxx" --ll "50.717,4.611" [--kw "couvreur wavre"] [--region "Brabant/Bxl"] [--target "nom court"] [--obj 20]
 node scripts/fiches.js retirer --name "Nom exact"
 node scripts/fiches.js modifier --name "Nom exact" [--kw "..."] [--obj 40] [--obj aucun] [--city ...] [--link ...] [--ll ...] [--region ...]
@@ -19,12 +20,12 @@ node scripts/verif-fiches.js [--strict]
 
 ## Comment remplir chaque champ
 
-- **name** : le nom affiché sur la fiche Google, tel quel. C'est la clé partout (blobs `ids`, `obj`, `kw`, `base`…). Ne jamais le changer sur une fiche existante : ça casserait son historique. Pour renommer, retirer puis ajouter.
+- **name** : le nom affiché sur la fiche Google, tel quel. C'est la clé partout (blobs `ids`, `obj`, `kw`, `base`…). **Ne jamais le changer sur une fiche existante**, même pour un espace en trop : ça casserait son historique. Renommer = retirer puis ajouter, avec l'accord de Rayan, en lui disant que l'historique repart de zéro.
 - **link** : lien de partage court `https://maps.app.goo.gl/…` (menu Partager de la fiche). Pas de lien `place_id`.
 - **city** : la ville de la fiche, avec accents et tirets (« Braine-l'Alleud », « Woluwe-Saint-Pierre »).
 - **ll** : « lat,lon » du centre de la ville, trois décimales. Le classement est mesuré dans un rayon de 2 km autour. Prendre les coordonnées de la ville, pas de l'adresse exacte.
 - **kw** : mot-clé de classement. Règle : **« couvreur » + ville normalisée** (minuscules, sans accents ni tirets ni apostrophes : « couvreur braine l alleud »). Le script le déduit tout seul si on ne le donne pas. Autre métier → même logique (« terrassement meaux »). Jamais « toiturier ». Plusieurs mots-clés : « kw1 | kw2 », trois maximum, le premier est le principal.
-- **region** : `Brabant/Bxl`, `Brabant`, `Liège`, `France`, `Suisse`. Déduit de la ville si absent (Liège si la ville est liégeoise, sinon Brabant/Bxl). Sert au pays de recherche et au libellé.
+- **region** : `Bruxelles`, `Brabant wallon`, `Brabant flamand`, `Liège`, `France`, `Suisse`. Le script la déduit de la ville ; ville inconnue → il refuse et demande `--region`. Sert au pays de recherche (DataForSEO) et au libellé. Le fichier est trié par région (dans cet ordre), puis ville, puis nom : `ajouter` et `modifier` retrient tout seuls.
 - **target** : nom court normalisé servant au matching avec Google Places. Par défaut le nom complet en minuscules. À raccourcir si le nom Google contient des mots qui varient (« Père et fils », slogans).
 - **obj** : objectif d'avis. Sacha a 20 sur presque toutes ses fiches. Une commande passée depuis le tracker augmente l'objectif toute seule, dans le blob `obj`, qui prime sur ce champ.
 - **base** : à ne poser que si Rayan le demande (total d'avis avant commande). Sinon la base vient du blob et de `setbase`.
