@@ -25,6 +25,10 @@ Rayan est le propriétaire (R.Consulting). Sacha est le client qui consulte le t
 | `netlify/functions/snapshot_*.js` | Anciens points d'entrée de relevé planifié. **Plus aucune planification** (voir règles). |
 | `netlify/functions/places.js`, `rank.js` | Anciens proxys Places et SerpAPI, quasi inutilisés. Ne pas s'appuyer dessus. |
 
+| `scripts/fiches.js` | Ajouter / retirer / modifier / lister une fiche en ligne de commande, avec vérification. |
+| `scripts/verif-fiches.js` | Vérifie `fiches.json` : doublons, champs manquants, formats, règles de mot-clé. |
+| `.claude/skills/fiches/` | Skill « fiches » : la marche à suivre pour toute modification du parc de fiches. |
+
 Pas de build, pas de framework, pas de tests automatisés. Seule dépendance : `@netlify/blobs`.
 
 ## Données : où elles vivent
@@ -82,7 +86,7 @@ Stripe Checkout (`/paiement`) et la notification WhatsApp (`/notif`) passent par
 - **Pas de pull request** sauf demande explicite. Push direct sur la branche indiquée.
 - **Pas de nouvelle dépendance, pas de framework, pas de build** sans accord.
 - Pas de tests automatisés : vérifier en relisant le diff et, si possible, en appelant la fonction concernée.
-- Une modification de `fiches.json` : vérifier qu'aucun lien Maps n'est en double et que `ll`, `city`, `kw` sont renseignés.
+- **Toute modification de `fiches.json` passe par `scripts/fiches.js`** (skill `fiches`), puis `node scripts/verif-fiches.js` doit sortir sans erreur.
 - Dater les décisions dans les commentaires (« depuis le 30/09/2026 : … ») comme c'est déjà fait dans le code.
 
 ## Glossaire
