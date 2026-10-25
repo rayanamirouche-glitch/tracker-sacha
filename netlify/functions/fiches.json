@@ -7,7 +7,9 @@
   "kw": "couvreur auderghem",
   "city": "Auderghem",
   "link": "https://maps.app.goo.gl/NLsARj4nMj7689ZD6",
-  "region": "Brabant/Bxl"
+  "region": "Brabant/Bxl",
+  "kg": "/g/11z2xt9mxm",
+  "cid": "3611863616939327378"
  },
  {
   "name": "Couvreur pro élite uccle",
@@ -17,7 +19,9 @@
   "kw": "couvreur uccle",
   "city": "Uccle",
   "link": "https://maps.app.goo.gl/1N5TRLnJDP6p1vZF8",
-  "region": "Brabant/Bxl"
+  "region": "Brabant/Bxl",
+  "kg": "/g/11z2vhpvy_",
+  "cid": "39517506315121168"
  },
  {
   "name": "ProCouverture la hulpe",
@@ -28,7 +32,9 @@
   "city": "La Hulpe",
   "link": "https://maps.app.goo.gl/vDzzNVkGbhpQ5DQh7",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11z3pvmln7",
+  "cid": "1991362756160795734"
  },
  {
   "name": "ProCouvreur waterloo toit",
@@ -38,7 +44,9 @@
   "kw": "couvreur waterloo",
   "city": "Waterloo",
   "link": "https://maps.app.goo.gl/D7Tt67K6zqYgsSJ9A",
-  "region": "Brabant/Bxl"
+  "region": "Brabant/Bxl",
+  "kg": "/g/11z3pw0wm0",
+  "cid": "14616330890469889463"
  },
  {
   "name": "Tradition et expertise toit couvreurs nivelles",
@@ -49,7 +57,9 @@
   "city": "Nivelles",
   "link": "https://maps.app.goo.gl/D8yDSbzFRCq5FmXA9",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zc_g1471",
+  "cid": "12048889503443555200"
  },
  {
   "name": "Top Alliance couvreurs Braine",
@@ -59,7 +69,9 @@
   "kw": "couvreur braine l alleud",
   "city": "Braine-l'Alleud",
   "link": "https://maps.app.goo.gl/cVcueU1uYX8fZd228",
-  "region": "Brabant/Bxl"
+  "region": "Brabant/Bxl",
+  "kg": "/g/11zgyjhzrj",
+  "cid": "15024905251433594096"
  },
  {
   "name": "Perfect toiture Rixensart Père et fils artisan couvreur",
@@ -70,7 +82,9 @@
   "city": "Rixensart",
   "link": "https://maps.app.goo.gl/VNmqCGkvPAx7mrv6A",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11nr7yy1jd",
+  "cid": "16167370478259334963"
  },
  {
   "name": "Toiturier herstal zinguerie et couverture",
@@ -81,7 +95,9 @@
   "city": "Herstal",
   "link": "https://maps.app.goo.gl/mFcExZckv548QB5P6",
   "region": "Liège",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11ntksxqs3",
+  "cid": "5459132017482408382"
  },
  {
   "name": "Renov toit liège couvreur master",
@@ -92,7 +108,9 @@
   "city": "Liège",
   "link": "https://maps.app.goo.gl/deVY8wHzAoJVE2y59",
   "region": "Liège",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11ntk2dwpx",
+  "cid": "7926615632746593286"
  },
  {
   "name": "Rénovation de lextrême : expert toituriers depuis 2000 ans ",
@@ -103,7 +121,9 @@
   "city": "Waremme",
   "link": "https://maps.app.goo.gl/AfGxAGjyHZrn788A9",
   "region": "Liège",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zh663dw_",
+  "cid": "8677896012172307520"
  },
  {
   "name": "Quatres saisons toiture pro couvreur seraing",
@@ -114,7 +134,9 @@
   "city": "Seraing",
   "link": "https://maps.app.goo.gl/2yJGKVg1oQZZyZZ67",
   "region": "Liège",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zh61jsyw",
+  "cid": "7435152048307575807"
  },
  {
   "name": "Top toiture chaud fontaine",
@@ -125,7 +147,9 @@
   "city": "Chaudfontaine",
   "link": "https://maps.app.goo.gl/Hz2WTmtgx5MvCPnW9",
   "region": "Liège",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11ntk7dyz4",
+  "cid": "16243377490646249596"
  },
  {
   "name": "Plateau artisan toituriers lélite de fleron",
@@ -136,7 +160,9 @@
   "city": "Fléron",
   "link": "https://maps.app.goo.gl/Z4aspLAGEzgeL8Ec8",
   "region": "Liège",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11ntk7ywgz",
+  "cid": "9965167937915896438"
  },
  {
   "name": "Renovtoit",
@@ -147,7 +173,9 @@
   "city": "Flémalle",
   "link": "https://maps.app.goo.gl/nNwFNoGEJBiEmWHGA",
   "region": "Liège",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11ntk79zkk",
+  "cid": "10767883957118370451"
  },
  {
   "name": "père et fils artisan couvreurs Verviers : les toits de vesdr",
@@ -158,7 +186,9 @@
   "city": "Verviers",
   "link": "https://maps.app.goo.gl/FpF5J1qNwicsGAXm8",
   "region": "Liège",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zd8hncyh",
+  "cid": "18327322553058111308"
  },
  {
   "name": "Waterloo mon toit étincelant",
@@ -169,7 +199,9 @@
   "city": "Waterloo",
   "link": "https://maps.app.goo.gl/QNKo7n7Y74S3aygo8",
   "region": "Brabant",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11nt_cx_7b",
+  "cid": "16413971049090972558"
  },
  {
   "name": "Mon couvreur pro. Toiture, charpente et zinguerie. Artisan R",
@@ -179,7 +211,9 @@
   "kw": "couvreur braine l'alleud",
   "city": "Braine-l'Alleud",
   "link": "https://maps.app.goo.gl/NTRricu3DKs86U4Q9",
-  "region": "Brabant"
+  "region": "Brabant",
+  "kg": "/g/11zdqbgjr0",
+  "cid": "14982469344962152198"
  },
  {
   "name": "Demoussage Waterloo mister toiture",
@@ -189,7 +223,9 @@
   "kw": "couvreur waterloo",
   "city": "Waterloo",
   "link": "https://maps.app.goo.gl/fcP238U1ZY62t6w57",
-  "region": "Brabant"
+  "region": "Brabant",
+  "kg": "/g/11zwpgw21b",
+  "cid": "16644160676013092112"
  },
  {
   "name": "Le meilleure pour ma toiture Waterloo couvreur",
@@ -200,7 +236,9 @@
   "city": "Waterloo",
   "link": "https://maps.app.goo.gl/DtVsUDFhe2SEnr1n9",
   "region": "Brabant",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11nv0_986v",
+  "cid": "6184481305759005430"
  },
  {
   "name": "spécialiste rénovation toiture. Artisanat et maîtrise Waterl",
@@ -211,7 +249,9 @@
   "city": "Waterloo",
   "link": "https://maps.app.goo.gl/gjoy4d5EjRw6GYcQA",
   "region": "Brabant",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zwpkgl8_",
+  "cid": "6807637885677555225"
  },
  {
   "name": "RSG rénovation couvreur à Rhode",
@@ -222,7 +262,9 @@
   "city": "Rhode-St-Genèse",
   "link": "https://maps.app.goo.gl/bMsJqibo5MViSz3B7",
   "region": "Brabant",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zwnp__k9",
+  "cid": "1848762049936432700"
  },
  {
   "name": "Couvreur SOS seraing toiture",
@@ -233,7 +275,9 @@
   "city": "Seraing",
   "link": "https://maps.app.goo.gl/idH12J7QEvjUai5k6",
   "region": "Liège",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11nv7p66c0",
+  "cid": "13035114760216266778"
  },
  {
   "name": "Toitures du Lac – couvreur à Rixensart, l’ardoise au sec",
@@ -244,7 +288,9 @@
   "city": "Rixensart",
   "link": "https://maps.app.goo.gl/xrUWWUHYkuarwWmRA",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zx6k3ccn",
+  "cid": "13190386114099792300"
  },
  {
   "name": "Couvreur Montvalezan | Charpente & Toiture des Arcs sous la neige",
@@ -255,7 +301,9 @@
   "city": "Montvalezan",
   "link": "https://maps.app.goo.gl/XqwakjYNCFRcqM5x9",
   "region": "France",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zf9mnp4v",
+  "cid": "6228234783203572038"
  },
  {
   "name": "Ets Delcourt, couvreur zingueur à Wavre",
@@ -266,7 +314,9 @@
   "city": "Wavre",
   "link": "https://maps.app.goo.gl/ohg8G8gmL1DX29nK8",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11nvlyj4tt",
+  "cid": "5126701514510637847"
  },
  {
   "name": "Wavre Toiture Pro – couvreur ardoisier du brabant",
@@ -277,7 +327,9 @@
   "city": "Wavre",
   "link": "https://maps.app.goo.gl/oMsN7426TGWAppjP8",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zf9mqqxx",
+  "cid": "17676747507494086638"
  },
  {
   "name": "Couvreur Grez-Doiceau · Maison Vandenberg Couverture toits de caractère",
@@ -288,7 +340,9 @@
   "city": "Grez-Doiceau",
   "link": "https://maps.app.goo.gl/ZJ6qaLEax1h2u9KUA",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zx6k4hxc",
+  "cid": "13342272298812712116"
  },
  {
   "name": "Hoeilaart 7ème ciel toiture",
@@ -299,7 +353,9 @@
   "city": "Hoeilaart",
   "link": "https://maps.app.goo.gl/PAJe8NzBy8UmVUX3A",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zf6gcd0l",
+  "cid": "6535095806057814585"
  },
  {
   "name": "Renard toiture kraainem zinc et ardoise",
@@ -310,7 +366,9 @@
   "city": "Kraainem",
   "link": "https://maps.app.goo.gl/Z9cn7GF661Xddhrf7",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zx3gmvlr",
+  "cid": "9672355200038176678"
  },
  {
   "name": "Delvaux couverture . Wezembeek oppem",
@@ -321,7 +379,9 @@
   "city": "Wezembeek-Oppem",
   "link": "https://maps.app.goo.gl/CjuKxZy6mqrJqxXW7",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zf6cx_50",
+  "cid": "4403109766661018043"
  },
  {
   "name": "Dakodak couvreur Zaventem",
@@ -343,7 +403,9 @@
   "city": "Bertem",
   "link": "https://maps.app.goo.gl/3kcY8wm1wSny19mJ9",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zf6j0fbk",
+  "cid": "14875594240339736799"
  },
  {
   "name": "Woluwe saint pierre techpro toiture devis gratuit drone",
@@ -354,7 +416,9 @@
   "city": "Woluwe-Saint-Pierre",
   "link": "https://maps.app.goo.gl/LqznRMM8AebvjqnA9",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11nvhstfw7",
+  "cid": "12844038908031936678"
  },
  {
   "name": "Ets de backer toiturier à Kortenberg",
@@ -365,7 +429,9 @@
   "city": "Kortenberg",
   "link": "https://maps.app.goo.gl/5NMaHh1KL5ecxcqc6",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zx3kbxd8",
+  "cid": "18091737025486452251"
  },
  {
   "name": "Faitage du château Oupeye toiture",
@@ -376,7 +442,9 @@
   "city": "Oupeye",
   "link": "https://maps.app.goo.gl/TqH8bjkTRrjYzdDv7",
   "region": "Liège",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11nvhcnhy2",
+  "cid": "1865828763038131661"
  },
  {
   "name": "Toit et moi . Tervuren toiture",
@@ -387,7 +455,9 @@
   "city": "Tervuren",
   "link": "https://maps.app.goo.gl/hSBE2k9eNVsHQLkZ7",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zx3dzpn6",
+  "cid": "17104944158278380179"
  },
  {
   "name": "Bernard and co toiture auderghem",
@@ -409,7 +479,9 @@
   "city": "Meaux",
   "link": "https://maps.app.goo.gl/wUps2Sq8qWswLfst5",
   "region": "France",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zx0xr3lf",
+  "cid": "12706358254658981253"
  },
  {
   "name": "Couvreur Anderlecht toit sec toit net",
@@ -420,7 +492,9 @@
   "city": "Anderlecht",
   "link": "https://maps.app.goo.gl/VSiwBoZJ4ytWfp3B8",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11zf62np1t",
+  "cid": "597553400206528877"
  },
  {
   "name": "Couverture de l'oie service de toiture à visé",
@@ -442,7 +516,9 @@
   "city": "Ottignies-Louvain-la-Neuve",
   "link": "https://maps.app.goo.gl/6aLb8r1HaKCqTRxe7",
   "region": "Brabant/Bxl",
-  "obj": 20
+  "obj": 20,
+  "kg": "/g/11nvhbzwls",
+  "cid": "16784415039423860733"
  },
  {
   "name": "Hal tuiles d'or couverture",
@@ -463,6 +539,8 @@
   "kw": "couvreur woluwe saint pierre",
   "city": "Woluwe-Saint-Pierre",
   "link": "https://maps.app.goo.gl/QHqeujAM6Scm4Vow7",
-  "region": "Brabant/Bxl"
+  "region": "Brabant/Bxl",
+  "kg": "/g/11nr7z38bv",
+  "cid": "4269739108133787043"
  }
 ]
